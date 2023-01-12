@@ -8,9 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var viewModel: ContentViewModel = .init()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        TabView {
+            HomeView(viewModel: viewModel)
+                .tabItem {
+                    Image(systemName: "house")
+                }
+            
+            HomeView(viewModel: viewModel)
+                .tabItem {
+                    Image(systemName: "square.grid.2x2")
+                }
+            HomeView(viewModel: viewModel)
+                .tabItem {
+                    Image(systemName: "heart")
+                }
+            HomeView(viewModel: viewModel)
+                .tabItem {
+                    Image(systemName: "list.bullet")
+                }
+        }
+
     }
 }
 
