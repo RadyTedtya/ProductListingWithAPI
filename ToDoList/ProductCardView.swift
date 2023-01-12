@@ -16,11 +16,16 @@ struct ProductCardView: View {
         VStack(spacing: 10) {
             
             ZStack {
-            
-                KFImage(URL(string: product.images[0]))
+                product.images?.count ?? 0 > 0 ? AnyView(KFImage(URL(string: product.images![0]))
                     .resizable()
                     .frame(maxWidth: .infinity)
-                    .frame(height: 180)
+                    .frame(height: 180))
+                : AnyView(Image("iphone")
+                    .resizable()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 180))
+                
+                
                 
                 Button {
                     print("Liked")
@@ -38,7 +43,7 @@ struct ProductCardView: View {
                     .foregroundColor(Color.black)
                     .font(.system(size: 15))
                 
-                Text(String(product.discountPercentage))
+                Text(String(product.discountPercentage ?? 0.0))
                     .foregroundColor(Color.red)
                     .font(.system(size: 12))
                 
@@ -46,7 +51,7 @@ struct ProductCardView: View {
                 Image(systemName: "star")
                     .resizable()
                     .frame(width: 12, height: 12)
-                Text(String(product.rating))
+                Text(String(product.rating ?? 0.0))
                     .foregroundColor(Color.black)
                     .font(.system(size: 12))
                 
@@ -57,8 +62,6 @@ struct ProductCardView: View {
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .shadow(radius: 10)
-        
-        
     }
 }
 

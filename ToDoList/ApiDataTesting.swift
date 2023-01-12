@@ -43,8 +43,11 @@ struct ApiDataTesting: View {
                 if !(viewModel.products ?? []).isEmpty {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
-                            ForEach(viewModel.products!) { product in
+                            ForEach(Array(viewModel.products!.enumerated()), id: \.offset) { index, product in
                                 Text(product.title)
+                                    .onAppear {
+                                        viewModel.loadMoreContent(currentIndex: index)
+                                    }
                             }
                         }
                     }
@@ -53,9 +56,7 @@ struct ApiDataTesting: View {
                 
             }
         }
-        .onAppear {
-            viewModel.fetchProducts()
-        }
+        
     }
 }
 

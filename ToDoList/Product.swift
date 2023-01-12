@@ -9,16 +9,19 @@ import Foundation
 
 struct ProductResponse: Decodable {
     var products: [Product]
+    let skip: Int
+    let limit: Int
+    let total: Int
 }
 
 struct Product: Identifiable, Decodable {
     let id: Int
     let title: String
-    let description: String
+    let description: String?
     let price: Double
-    let discountPercentage: Double
-    let rating: Double
-    let images: [String]
+    let discountPercentage: Double?
+    let rating: Double?
+    let images: [String]?
     
     
     static let dummyImages: [String] = [

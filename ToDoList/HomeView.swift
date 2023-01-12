@@ -17,18 +17,6 @@ struct HomeView: View {
     @ObservedObject var viewModel: ContentViewModel = .init()
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
-    
-    
-    //    var searchResults: [Product] {
-    //            if searchText.isEmpty {
-    //                return viewModel.products ?? []
-    //            } else {
-    ////                return viewModel.products.filter { $0.contains(searchText) }
-    ////                return nil
-    //            }
-    //        }
-    
-    
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
@@ -57,6 +45,10 @@ struct HomeView: View {
                             LazyVGrid(columns: columns) {
                                 ForEach(Array(viewModel.products!.enumerated()), id: \.offset) { index, product in
                                     ProductCardView(product: product)
+                                        .onAppear {
+                                            viewModel.loadMoreContent(currentIndex: index)
+                                            
+                                        }
                                 }
                             }
                         }
@@ -67,6 +59,9 @@ struct HomeView: View {
                 
                 
             }
+            .onAppear {
+                viewModel.fetchProductsPagination()
+            }
             .frame(maxWidth: .infinity)
             .background(Color.primaryBackground)
             .navigationBarItems(trailing:
@@ -74,9 +69,6 @@ struct HomeView: View {
             )
             .searchable(text: $searchText, prompt: "Look for something")
             
-        }
-        .onAppear {
-            viewModel.fetchProducts()
         }
     }
 }

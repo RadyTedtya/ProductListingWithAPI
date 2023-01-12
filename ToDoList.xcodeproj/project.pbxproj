@@ -25,7 +25,6 @@
 		D301A596296D3A3500A8DF6F /* ApiDataTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A595296D3A3500A8DF6F /* ApiDataTesting.swift */; };
 		D301A59B296D7F3700A8DF6F /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A59A296D7F3700A8DF6F /* ProductDetailView.swift */; };
 		D3E5BC84296E774C004781B6 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5BC83296E774C004781B6 /* ListView.swift */; };
-		D3E5BC86296FD0A9004781B6 /* ImageLoaderURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5BC85296FD0A9004781B6 /* ImageLoaderURL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +71,6 @@
 		D301A595296D3A3500A8DF6F /* ApiDataTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDataTesting.swift; sourceTree = "<group>"; };
 		D301A59A296D7F3700A8DF6F /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		D3E5BC83296E774C004781B6 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
-		D3E5BC85296FD0A9004781B6 /* ImageLoaderURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderURL.swift; sourceTree = "<group>"; };
 		DBE2768B8706EFF129E1E27E /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -164,7 +162,6 @@
 				D301A59A296D7F3700A8DF6F /* ProductDetailView.swift */,
 				D301A563296D19A800A8DF6F /* Preview Content */,
 				D3E5BC83296E774C004781B6 /* ListView.swift */,
-				D3E5BC85296FD0A9004781B6 /* ImageLoaderURL.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -440,7 +437,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3E5BC86296FD0A9004781B6 /* ImageLoaderURL.swift in Sources */,
 				D301A560296D19A700A8DF6F /* ContentView.swift in Sources */,
 				D301A596296D3A3500A8DF6F /* ApiDataTesting.swift in Sources */,
 				D3E5BC84296E774C004781B6 /* ListView.swift in Sources */,
