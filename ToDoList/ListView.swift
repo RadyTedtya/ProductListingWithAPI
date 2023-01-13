@@ -9,13 +9,15 @@ import SwiftUI
 
 struct ListView: View {
     
-    //    @Binding var searchedProducts: [Product]
-    
-    //    @Binding var products = [Product.dummyProduct, Product.dummyProduct]
+//        @Binding var searchedProducts: String = ""
+//    @Binding var contentModel: ContentViewModel
     
     var body: some View {
         VStack {
             ScrollView {
+                
+                
+                
                 //                ForEach($searchProducts) { product in
                 //                    NavigationLink {
                 //                        ProductDetailView()
@@ -43,7 +45,7 @@ struct RowView: View {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        //        ListView(searchedProducts: )
+//        ListView(searchedProducts: .init())
         ListView()
     }
 }

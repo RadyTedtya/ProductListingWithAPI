@@ -10,8 +10,6 @@ import SwiftUI
 
 struct HomeView: View {
     
-    
-    
     @State var searchText: String = ""
     @State var categories: [String] = ["Trending", "New", "Sale", "Most Sale", "For you"]
     @ObservedObject var viewModel: ContentViewModel = .init()
@@ -20,7 +18,6 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
-                
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(categories, id: \.self) { id in
@@ -55,9 +52,6 @@ struct HomeView: View {
                         
                     }
                 }
-                
-                
-                
             }
             .onAppear {
                 viewModel.fetchProductsPagination()
@@ -67,11 +61,21 @@ struct HomeView: View {
             .navigationBarItems(trailing:
                                     Image(systemName: "bag")
             )
-            .searchable(text: $searchText, prompt: "Look for something")
+            .searchable(text: $searchText)
+            
+            
             
         }
+        
     }
+    
+//    var searchResults: [Product] {
+//
+//    }
+    
 }
+
+
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
