@@ -14,14 +14,15 @@ struct ProductCardView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            
-            ZStack {
+            ZStack(alignment: .top) {
                 product.images?.count ?? 0 > 0 ? AnyView(KFImage(URL(string: product.images![0]))
                     .resizable()
+                    .padding()
                     .frame(maxWidth: .infinity)
                     .frame(height: 180))
                 : AnyView(Image("iphone")
                     .resizable()
+                    .padding()
                     .frame(maxWidth: .infinity)
                     .frame(height: 180))
                 
@@ -31,12 +32,17 @@ struct ProductCardView: View {
                     print("Liked")
                 } label: {
                     Image(systemName: "heart")
+                        .foregroundColor(Color.primary)
                 }
+                .offset(x:60, y: -15)
+                
             }
-            .frame(width: 150, height: 220, alignment: .center)
+            .frame(width: 150, height: 210, alignment: .trailing)
             
             Text(product.title)
                 .foregroundColor(Color.primaryTextColor)
+                
+            
             
             HStack {
                 Text(String(product.price))
@@ -58,10 +64,11 @@ struct ProductCardView: View {
             }
         }
         .padding()
-        .frame(width: 180, height: 300)
+        .frame(width: 170, height: 300)
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .shadow(radius: 10)
+        .padding()
     }
 }
 

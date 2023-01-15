@@ -10,9 +10,12 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @ObservedObject var viewModel: ContentViewModel = .init()
+    @ObservedObject var searchResults: ContentViewModel = .init()
     @State var searchText: String = ""
     @State var categories: [String] = ["Trending", "New", "Sale", "Most Sale", "For you"]
-    @ObservedObject var viewModel: ContentViewModel = .init()
+    
+    
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
@@ -36,23 +39,49 @@ struct HomeView: View {
                 
                 Spacer()
                 
+                //                if !(viewModel.products ?? []).isEmpty {
+                //                    ScrollView(.vertical) {
+                //                        VStack {
+                //                            LazyVGrid(columns: columns) {
+                //                                ForEach(Array(viewModel.products!.enumerated()), id: \.offset) { index, product in
+                //                                    ProductCardView(product: product)
+                //                                        .onAppear {
+                //                                            viewModel.loadMoreContent(currentIndex: index)
+                //                                        }
+                //                                }
+                //                            }
+                //                        }
+                //                    }
+                //                }
+                //            }
+                
                 if !(viewModel.products ?? []).isEmpty {
                     ScrollView(.vertical) {
                         VStack {
                             LazyVGrid(columns: columns) {
-                                ForEach(Array(viewModel.products!.enumerated()), id: \.offset) { index, product in
-                                    ProductCardView(product: product)
-                                        .onAppear {
-                                            viewModel.loadMoreContent(currentIndex: index)
-                                            
+                                if searchText.isEmpty {
+                                    ForEach(Array(viewModel.products!.enumerated()), id: \.offset) { index, product in
+                                        ProductCardView(product: product)
+                                            .onAppear {
+                                                viewModel.loadMoreContent(currentIndex: index)
+                                            }
+                                    }
+                                }else {
+                                    List(searchResults) { product in
+                                        NavigationLink {
+                                            ProductDetailView(product: product)
+                                        } label: {
+                                            Text(product.title)
                                         }
+                                        
+                                    }
                                 }
                             }
                         }
-                        
                     }
                 }
             }
+            
             .onAppear {
                 viewModel.fetchProductsPagination()
             }
@@ -62,24 +91,22 @@ struct HomeView: View {
                                     Image(systemName: "bag")
             )
             .searchable(text: $searchText)
-            
-            
-            
         }
-        
+        .background(Color.primaryBackground)
     }
     
-//    var searchResults: [Product] {
-//
-//    }
-    
+    var searchText
 }
+
+
+
+
 
 
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: .init())
+        HomeView(searchResults: .init([]))
     }
 }
 

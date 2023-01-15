@@ -8,33 +8,10 @@
 import SwiftUI
 
 struct ProductDetailView: View {
+    
+    @State var product: Product = Product.dummyProduct
     var body: some View {
-        //        ZStack(alignment: .center) {
-        //            VStack {
-        //
-        //                Image("iphone")
-        //                    .resizable()
-        //                    .frame(width: 80, height: 200)
-        //
-        //
-        //                VStack {
-        //
-        //                }
-        //                .frame(width: 500, height: 500)
-        //                .background(Color.yellow)
-        //
-        //            }.frame(maxWidth: .infinity)
-        //            VStack {
-        //
-        //            }
-        //            .frame(width: 500, height: 200)
-        //            .background()
-        //
-        //        }
-        //        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        //        .background(Color.red)
-        //    }
-        
+
             VStack {
                 Image("iphone")
                     .resizable()
@@ -43,17 +20,17 @@ struct ProductDetailView: View {
                 
                 VStack {
                     HStack {
-                        Text(Product.dummyProduct.title)
+                        Text(product.title)
                         Spacer()
                         Image(systemName: "square.and.arrow.up")
                     }
                     Spacer()
                     HStack {
-                        Text(String(Product.dummyProduct.price))
-                        Text(String(Product.dummyProduct.discountPercentage ?? 0.0))
+                        Text(String(product.price))
+                        Text(String(product.discountPercentage ?? 0.0))
                         Spacer()
                         Image(systemName: "star")
-                        Text(String(Product.dummyProduct.rating ?? 0.0))
+                        Text(String(product.rating ?? 0.0))
                     }
                     
                 }
@@ -81,7 +58,7 @@ struct ProductDetailView: View {
                     
                     Spacer()
                     Text("Detail")
-                    Text(Product.dummyProduct.description ?? "")
+                    Text(product.description ?? "")
                     
                     HStack {
                         

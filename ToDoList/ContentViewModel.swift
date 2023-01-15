@@ -16,6 +16,7 @@ class ContentViewModel: ObservableObject {
     private var _hasMoreItem: Bool = false
     var page : Int = 0
     
+    
     func loadMoreContent(currentIndex index: Int){
         if _hasMoreItem, index == (products?.count ?? 0) - 1 {
             page += 1
@@ -44,10 +45,9 @@ class ContentViewModel: ObservableObject {
         
     }
     
-    //    func fetchSearchedProducts() {
-    //
-    //        AF.request("https://dummyjson.com/products/search?q=phone")
-    //
-    //    }
+        func fetchSearchedProducts() {
+            AF.request("https://dummyjson.com/products/search?q=phone")
+
+        }
     
 }
