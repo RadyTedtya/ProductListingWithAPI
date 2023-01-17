@@ -15,7 +15,7 @@ struct ProductResponse: Decodable {
 }
 
 struct CategoryResponse: Decodable {
-    var category: [String]
+    var categories: [String]
 }
 
 struct Product: Identifiable, Decodable {

@@ -18,11 +18,11 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "house")
                 }
-            
-            HomeView(viewModel: viewModel)
+            CategoryView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "square.grid.2x2")
                 }
+            
             HomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "heart")

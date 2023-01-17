@@ -14,7 +14,7 @@ class ContentViewModel: ObservableObject {
     @Published var searchproducts: [Product]? = nil
     @Published var isLoading: Bool = false
     @Published var searchText: String = ""
-    @Published var productCategory: [String] = []
+    @Published var productCategories: [String]? = []
     private var _hasMoreItem: Bool = false
     var page : Int = 0
     
@@ -35,7 +35,6 @@ class ContentViewModel: ObservableObject {
             query += "&q=\(searchText)"
         }
         fetchString += "?\(query)"
-        print(fetchString)
         AF.request(fetchString)
             .responseDecodable(of: ProductResponse.self) { response in
                 defer { self.isLoading = false }
@@ -58,25 +57,27 @@ class ContentViewModel: ObservableObject {
         page = 0
     }
 
-//    func fetchCategoryProducts() {
-//        isLoading = true
-//        let fetchCategoryQuery = "https://dummyjson.com/products/categories"
-//        AF.request(fetchCategoryQuery)
-//            .responseDecodable(of: CategoryResponse.self) { response in
-//                defer { self.isLoading = false }
-//                guard response.value != nil else {
-//                    print("error")
-//                    return
-//                }
-//                
-//                if self.productCategory == nil {
-//                    self.productCategory = []
-//                }
-////                self.productCategory.append(contentsOf: response.value!)
-//                
-//            }
-//        
-//    }
+    func fetchCategoryProducts() {
+        isLoading = true
+        let fetchCategoryQuery = "https://dummyjson.com/products/categories"
+        print(fetchCategoryQuery)
+        AF.request(fetchCategoryQuery)
+            .responseDecodable(of: CategoryResponse.self) { response in
+                defer { self.isLoading = false }
+                guard response.value != nil else {
+                    print("error")
+                    return
+                }
+                if self.productCategories == nil {
+                    self.productCategories = []
+                }
+
+                self.productCategories?.append(contentsOf: response.value!.categories)
+                print(response.value!)
+
+            }
+        
+    }
     
     
 }

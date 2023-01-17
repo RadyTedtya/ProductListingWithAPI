@@ -25,6 +25,7 @@
 		D301A596296D3A3500A8DF6F /* ApiDataTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A595296D3A3500A8DF6F /* ApiDataTesting.swift */; };
 		D301A59B296D7F3700A8DF6F /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A59A296D7F3700A8DF6F /* ProductDetailView.swift */; };
 		D390554629765C2D00166467 /* LikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390554529765C2D00166467 /* LikeView.swift */; };
+		D390554829767EBA00166467 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390554729767EBA00166467 /* CategoryView.swift */; };
 		D3E5BC84296E774C004781B6 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E5BC83296E774C004781B6 /* ListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		D301A595296D3A3500A8DF6F /* ApiDataTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiDataTesting.swift; sourceTree = "<group>"; };
 		D301A59A296D7F3700A8DF6F /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		D390554529765C2D00166467 /* LikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeView.swift; sourceTree = "<group>"; };
+		D390554729767EBA00166467 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		D3E5BC83296E774C004781B6 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		DBE2768B8706EFF129E1E27E /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 				D301A55D296D19A700A8DF6F /* ToDoListApp.swift */,
 				D301A58E296D326200A8DF6F /* HomeView.swift */,
 				D301A588296D209500A8DF6F /* ContentViewModel.swift */,
+				D390554729767EBA00166467 /* CategoryView.swift */,
 				D301A55F296D19A700A8DF6F /* ContentView.swift */,
 				D301A58C296D2FB000A8DF6F /* ProductCardView.swift */,
 				D301A595296D3A3500A8DF6F /* ApiDataTesting.swift */,
@@ -442,6 +445,7 @@
 			files = (
 				D301A560296D19A700A8DF6F /* ContentView.swift in Sources */,
 				D301A596296D3A3500A8DF6F /* ApiDataTesting.swift in Sources */,
+				D390554829767EBA00166467 /* CategoryView.swift in Sources */,
 				D3E5BC84296E774C004781B6 /* ListView.swift in Sources */,
 				D301A594296D391200A8DF6F /* Color+Extension.swift in Sources */,
 				D301A55E296D19A700A8DF6F /* ToDoListApp.swift in Sources */,
