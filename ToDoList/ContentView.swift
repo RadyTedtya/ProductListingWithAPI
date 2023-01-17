@@ -13,20 +13,21 @@ struct ContentView: View {
     var body: some View {
         
         TabView {
-            HomeView(viewModel: viewModel, searchResults: [])
+//            HomeView(viewModel: viewModel, searchResults: [])
+            HomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "house")
                 }
             
-            HomeView(viewModel: viewModel, searchResults: [])
+            HomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "square.grid.2x2")
                 }
-            HomeView(viewModel: viewModel, searchResults: [])
+            HomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "heart")
                 }
-            HomeView(viewModel: viewModel, searchResults: [])
+            HomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "list.bullet")
                 }

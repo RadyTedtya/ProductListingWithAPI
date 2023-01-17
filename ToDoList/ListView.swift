@@ -18,18 +18,6 @@ struct ListView: View {
                 
                 
                 
-                //                ForEach($searchProducts) { product in
-                //                    NavigationLink {
-                //                        ProductDetailView()
-                //                    } label: {
-                //                        product.title
-                //                    }
-                //
-                //                }
-                
-                
-                
-                
             }
         }
     }

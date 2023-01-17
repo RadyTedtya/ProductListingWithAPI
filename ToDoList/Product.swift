@@ -14,6 +14,10 @@ struct ProductResponse: Decodable {
     let total: Int
 }
 
+struct CategoryResponse: Decodable {
+    var category: [String]
+}
+
 struct Product: Identifiable, Decodable {
     let id: Int
     let title: String
@@ -22,6 +26,7 @@ struct Product: Identifiable, Decodable {
     let discountPercentage: Double?
     let rating: Double?
     let images: [String]?
+    let category: String?
     
     
     static let dummyImages: [String] = [
@@ -32,7 +37,7 @@ struct Product: Identifiable, Decodable {
         "https://i.dummyjson.com/data/products/12/thumbnail.jpg"]
     
     
-    static let dummyProduct: Product = .init(id: 0, title: "iPhone  XS", description: "This is an Iphone XS MAX", price: 400, discountPercentage: 250, rating: 4.2, images: dummyImages)
+    static let dummyProduct: Product = .init(id: 0, title: "iPhone  XS", description: "This is an Iphone XS MAX", price: 400, discountPercentage: 250, rating: 4.2, images: dummyImages, category: "smartphone")
 }
 
 

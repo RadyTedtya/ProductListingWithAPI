@@ -6,17 +6,31 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProductDetailView: View {
     
     @State var product: Product = Product.dummyProduct
     var body: some View {
-
+        ScrollView {
             VStack {
-                Image("iphone")
+                KFImage(URL(string: product.images![0]))
                     .resizable()
-                    .frame(width: 150, height: 350)
+                    .frame(width: 150, height: 300)
                     .padding(.top, 50)
+                
+                //                product.images?.count ?? 0 > 0 ? AnyView(KFImage(URL(string: product.images![0]))
+                //                    .resizable()
+                //                    .padding()
+                //                    .frame(maxWidth: .infinity)
+                //                    .frame(height: 180))
+                //                : AnyView(Image("iphone")
+                //                    .resizable()
+                //                    .padding()
+                //                    .frame(maxWidth: .infinity)
+                //                    .frame(height: 180))
+                
+                Spacer()
                 
                 VStack {
                     HStack {
@@ -41,6 +55,8 @@ struct ProductDetailView: View {
                 .shadow(color: Color.gray.opacity(0.6), radius: 10, x: 0, y: 0)
                 .padding(.bottom)
                 
+                Spacer()
+                
                 VStack(alignment: .leading) {
                     Text("Color")
                     HStack(spacing: 10) {
@@ -60,8 +76,7 @@ struct ProductDetailView: View {
                     Text("Detail")
                     Text(product.description ?? "")
                     
-                    HStack {
-                        
+                    HStack() {
                         Image(systemName: "heart.square.fill")
                             .resizable()
                             .frame(width: 50, height: 50)
@@ -76,9 +91,8 @@ struct ProductDetailView: View {
                                 .frame(width: 200, height: 50)
                                 .background(Color.secondaryColor)
                                 .clipShape(RoundedRectangle(cornerRadius: 6))
-                                
                         }
-                     
+                        
                     }
                     
                     Spacer()
@@ -89,6 +103,8 @@ struct ProductDetailView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 30))
                 .edgesIgnoringSafeArea(.bottom)
             }
+            
+        }
         
     }
     
