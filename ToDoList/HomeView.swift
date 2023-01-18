@@ -11,14 +11,12 @@ import SwiftUI
 struct HomeView: View {
     
     @ObservedObject var viewModel: ContentViewModel = .init()
-    //    @ObservedObject var searchResults: ContentViewModel = .init()
     @State var categories: [String] = ["Trending", "New", "Sale", "Most Sale", "For you"]
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
-                
                 ScrollView(.horizontal) {
                     HStack {
                         ForEach(categories, id: \.self) { id in
@@ -55,7 +53,9 @@ struct HomeView: View {
                     }
                 }
             }
+
             .onAppear {
+                viewModel.resetProducts()
                 viewModel.fetchProductsPagination()
             }
             .frame(maxWidth: .infinity)

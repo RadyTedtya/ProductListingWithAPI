@@ -14,10 +14,11 @@ class ContentViewModel: ObservableObject {
     @Published var searchproducts: [Product]? = nil
     @Published var isLoading: Bool = false
     @Published var searchText: String = ""
-    @Published var productCategories: [String]? = []
+    @Published var categories: [String]? = []
+    @Published var category: String = ""
+    
     private var _hasMoreItem: Bool = false
     var page : Int = 0
-    
     
     func loadMoreContent(currentIndex index: Int){
         if _hasMoreItem, index == (products?.count ?? 0) - 1 {
@@ -26,6 +27,12 @@ class ContentViewModel: ObservableObject {
         }
     }
     
+
+//  MARK:   API fetch to:
+//          - load all products
+//          - load search product
+//          - load category products
+//          with pagination
     func fetchProductsPagination() {
         isLoading = true
         var fetchString  = "https://dummyjson.com/products"
@@ -33,6 +40,11 @@ class ContentViewModel: ObservableObject {
         if !searchText.isEmpty {
             fetchString += "/search"
             query += "&q=\(searchText)"
+        }
+        else if !category.isEmpty {
+            fetchString += "/category/\(category)?"
+            print("category is not empty")
+            print(category)
         }
         fetchString += "?\(query)"
         AF.request(fetchString)
@@ -42,14 +54,12 @@ class ContentViewModel: ObservableObject {
                     print("error")
                     return
                 }
-                
                 if self.products == nil {
                     self.products = []
                 }
                 self.products?.append(contentsOf: response.value!.products)
                 self._hasMoreItem = response.value!.total != self.products!.count
             }
-
     }
     
     func resetProducts() {
@@ -57,28 +67,31 @@ class ContentViewModel: ObservableObject {
         page = 0
     }
 
-    func fetchCategoryProducts() {
+    func fetchCategories() {
         isLoading = true
         let fetchCategoryQuery = "https://dummyjson.com/products/categories"
         print(fetchCategoryQuery)
         AF.request(fetchCategoryQuery)
-            .responseDecodable(of: CategoryResponse.self) { response in
+            .responseDecodable(of: [String].self) { cateResponse in
                 defer { self.isLoading = false }
-                guard response.value != nil else {
+                guard cateResponse.value != nil else {
                     print("error")
                     return
                 }
-                if self.productCategories == nil {
-                    self.productCategories = []
+                if self.categories == nil {
+                    self.categories = []
                 }
-
-                self.productCategories?.append(contentsOf: response.value!.categories)
-                print(response.value!)
-
+                self.categories?.append(contentsOf: cateResponse.value!)
+                print(cateResponse.value!)
             }
-        
     }
-    
     
 }
 
+
+
+//  MARK: - API URL
+//  https://dummyjson.com/products
+//  https://dummyjson.com/products/search?limit=10&skip=0&q=phone
+//  https://dummyjson.com/products/category/smartphones?limit=10&skip=0
+    

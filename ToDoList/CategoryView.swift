@@ -9,26 +9,36 @@ import Foundation
 import SwiftUI
 
 struct CategoryView: View {
-    @ObservedObject var viewModel: ContentViewModel = .init()
-    var body: some View {
-        List {
-            ForEach(viewModel.productCategories!, id: \.self) { category in
-                NavigationLink {
-                } label: {
-                    Text(category)
-                }
-            }
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .onAppear {
-            viewModel.fetchCategoryProducts()
-        }
-    }
     
-}
+    @ObservedObject var viewModel: ContentViewModel = .init()
 
-struct CategoryView_Preview: PreviewProvider {
-    static var previews: some View {
-        CategoryView(viewModel: .init())
+    var body: some View {
+        
+        NavigationView {
+            List {
+                ForEach(viewModel.categories!, id: \.self) { category in
+                    NavigationLink {
+                        SubCategoryView(viewModel: viewModel)
+                            .onAppear {
+                                viewModel.resetProducts()
+                                viewModel.category = category
+                            }
+                    } label: {
+                        Text(category)
+                            .font(.system(size: 15))
+                            .foregroundColor(Color.black)
+                            
+                    }
+                }
+
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .onAppear {
+                viewModel.resetProducts()
+                viewModel.fetchCategories()
+            }
+            
+        }
+        .navigationTitle("Product Categories")
     }
 }

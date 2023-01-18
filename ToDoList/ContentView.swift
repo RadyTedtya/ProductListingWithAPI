@@ -13,7 +13,6 @@ struct ContentView: View {
     var body: some View {
         
         TabView {
-//            HomeView(viewModel: viewModel, searchResults: [])
             HomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "house")
