@@ -41,17 +41,18 @@ struct ProductCardView: View {
             
             Text(product.title)
                 .foregroundColor(Color.primaryTextColor)
+                .font(.system(size: 18, weight: .bold))
                 
             
             
             HStack {
-                Text(String(product.price))
+                Text("$"+String(product.price))
                     .foregroundColor(Color.black)
-                    .font(.system(size: 15))
+                    .font(.system(size: 11.5))
                 
-                Text(String(product.discountPercentage ?? 0.0))
+                Text("$"+String(product.discountPercentage ?? 0.0))
                     .foregroundColor(Color.red)
-                    .font(.system(size: 12))
+                    .font(.system(size: 10.5))
                 
                 Spacer()
                 Image(systemName: "star")
@@ -59,7 +60,7 @@ struct ProductCardView: View {
                     .frame(width: 12, height: 12)
                 Text(String(product.rating ?? 0.0))
                     .foregroundColor(Color.black)
-                    .font(.system(size: 12))
+                    .font(.system(size: 10.5))
                 
             }
         }

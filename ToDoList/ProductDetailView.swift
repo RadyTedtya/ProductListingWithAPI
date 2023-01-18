@@ -25,16 +25,18 @@ struct ProductDetailView: View {
                     VStack {
                         HStack {
                             Text(product.title)
+                                .font(.system(size: 18, weight: .bold))
                             Spacer()
                             Image(systemName: "square.and.arrow.up")
                         }
                         Spacer()
                         HStack {
-                            Text(String(product.price))
-                            Text(String(product.discountPercentage ?? 0.0))
+                            Text("$"+String(product.price))
+                            Text("$"+String(product.discountPercentage ?? 0.0))
                             Spacer()
                             Image(systemName: "star")
                             Text(String(product.rating ?? 0.0))
+                                .foregroundColor(Color.primary)
                         }
                         
                     }
@@ -61,12 +63,13 @@ struct ProductDetailView: View {
                             Image(systemName: "rectangle.roundedtop.fill")
                                 .foregroundColor(Color.green)
                         }
+                        .padding(.bottom)
                         
-                        Spacer()
-                        Text("Detail")
-                        Text(product.description ?? "")
-                            .multilineTextAlignment(.center)
-                            .frame(maxHeight: .infinity)
+                        VStack(alignment: .leading) {
+                            Text("Detail")
+                            Text(product.description ?? "")
+                                .multilineTextAlignment(.center)
+                        }
                         
                         HStack() {
                             Image(systemName: "heart.square.fill")
