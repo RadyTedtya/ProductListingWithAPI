@@ -11,6 +11,7 @@ import SwiftUI
 struct SignInView: View {
     
     @ObservedObject var viewModel: LoginViewModel = .init()
+    @State private var showingAlert = false
     
     var body: some View {
         VStack(alignment: .center) {
@@ -23,19 +24,19 @@ struct SignInView: View {
             Spacer()
             
             VStack(alignment: .leading, spacing: 5) {
-                Text("Sign in to your account")
+                Text("Log in to your account")
                     .font(.system(size: 23))
-                Text("Hello there, please sign in to continue")
+                Text("Hello there, please log in to continue")
                     .foregroundColor(Color.gray)
                 
                 VStack(alignment: .leading) {
                     Text("Email or Phone Number")
                         .foregroundColor(Color.tertiaryBackground)
                         .font(.system(size: 17, weight: .bold))
-                        
+                    
                     TextField(
-                      "Username/Email",
-                      text: $viewModel.username
+                        "Username/Email",
+                        text: $viewModel.username
                     )
                 }
                 .padding()
@@ -46,16 +47,17 @@ struct SignInView: View {
                         .font(.system(size: 17, weight: .bold))
                     
                     TextField(
-                      "Password",
-                      text: $viewModel.password
+                        "Password",
+                        text: $viewModel.password
                     )
                 }
                 .padding()
                 
                 Button {
                     viewModel.login()
+                    showingAlert = true
                 } label: {
-                    Text("Sign in")
+                    Text("Log in")
                         .padding()
                         .foregroundColor(Color.white)
                         .frame(maxWidth: .infinity)
@@ -64,8 +66,10 @@ struct SignInView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.horizontal)
                 }
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text(loginResult()))
+                }
                 
-
                 Text("Forgot password")
                     .foregroundColor(Color.tertiaryBackground)
                     .padding(.top)
@@ -96,6 +100,14 @@ struct SignInView: View {
         .background(Color.tertiaryBackground)
     }
     
+    func loginResult() -> String {
+        if viewModel.loginSuccess {
+            return "Login success"
+        } else {
+            return "Login failed"
+        }
+    }
+    
 }
 
 struct SignInView_Preview: PreviewProvider {
@@ -103,3 +115,10 @@ struct SignInView_Preview: PreviewProvider {
         SignInView()
     }
 }
+
+
+
+
+
+
+

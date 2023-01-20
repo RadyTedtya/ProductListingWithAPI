@@ -20,7 +20,6 @@ struct UserSignUpRequest: Encodable {
     let DoB: String
 }
 
-
 class LoginViewModel: ObservableObject {
     
     @Published var loginSuccess = false
@@ -29,8 +28,6 @@ class LoginViewModel: ObservableObject {
     @Published var DoB: String = "12 Jan 1999"
     @Published var isLoading: Bool = false
     @Published var user: User = User.dummUser
-    
-    
     
     func login() {
         isLoading = true
@@ -48,18 +45,16 @@ class LoginViewModel: ObservableObject {
                 print(response.value!)
                 if !(response.value?.token.isEmpty ?? false) {
                     self.loginSuccess = true
-                    print("Login success")
                 }
             }
     }
-
     
     func signUp() {
         isLoading = true
         let signUpURL = "https://dummyjson.com/users/add"
         let header: HTTPHeaders = ["Content-Type" : "application/json"]
         
-
+        
         
         AF.request(signUpURL, method: .post, parameters: UserSignUpRequest(username: username, password: password, DoB: DoB), encoder: .json, headers: header)
             .responseDecodable(of: UserResponse.self) { response in
@@ -68,10 +63,8 @@ class LoginViewModel: ObservableObject {
                     print("error")
                     return
                 }
-
-
                 
-                    if response.value?.id != nil {
+                if response.value?.id != nil {
                     print("Sign up success")
                 } else {
                     print("Sign up failed")
