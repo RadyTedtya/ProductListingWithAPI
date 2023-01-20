@@ -15,7 +15,7 @@ struct HomeView: View {
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-        NavigationView {
+        
             VStack(spacing: 10) {
                 ScrollView(.horizontal) {
                     HStack {
@@ -73,13 +73,9 @@ struct HomeView: View {
                 viewModel.fetchProductsPagination()
             }
         }
-    }
+
     
 }
-
-
-
-
 
 
 struct HomeView_Previews: PreviewProvider {

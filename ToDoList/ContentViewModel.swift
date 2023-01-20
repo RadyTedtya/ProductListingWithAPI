@@ -16,6 +16,8 @@ class ContentViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var categories: [String]? = []
     @Published var category: String = ""
+    @Published var users: [User]? = nil
+    
     
     private var _hasMoreItem: Bool = false
     var page : Int = 0
@@ -43,8 +45,8 @@ class ContentViewModel: ObservableObject {
         }
         else if !category.isEmpty {
             fetchString += "/category/\(category)?"
-            print("category is not empty")
-            print(category)
+//            print("category is not empty")
+//            print(category)
         }
         fetchString += "?\(query)"
         AF.request(fetchString)
@@ -85,6 +87,8 @@ class ContentViewModel: ObservableObject {
                 print(cateResponse.value!)
             }
     }
+    
+
     
 }
 

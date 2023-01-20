@@ -12,25 +12,27 @@ struct ContentView: View {
     
     var body: some View {
         
-        TabView {
-            HomeView(viewModel: viewModel)
-                .tabItem {
-                    Image(systemName: "house")
-                }
-            CategoryView(viewModel: viewModel)
-                .tabItem {
-                    Image(systemName: "square.grid.2x2")
-                }
+            TabView {
+                HomeView(viewModel: viewModel)
+                    .tabItem {
+                        Image(systemName: "house")
+                    }
+                CategoryView(viewModel: viewModel)
+                    .tabItem {
+                        Image(systemName: "square.grid.2x2")
+                    }
+                
+                HomeView(viewModel: viewModel)
+                    .tabItem {
+                        Image(systemName: "heart")
+                    }
+                SettingView()
+                    .tabItem {
+                        Image(systemName: "list.bullet")
+                    }
             
-            HomeView(viewModel: viewModel)
-                .tabItem {
-                    Image(systemName: "heart")
-                }
-            HomeView(viewModel: viewModel)
-                .tabItem {
-                    Image(systemName: "list.bullet")
-                }
         }
+        
 
     }
 }
