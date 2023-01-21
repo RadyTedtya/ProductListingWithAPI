@@ -29,6 +29,9 @@
 		D3541A672979023400226D7E /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3541A662979023400226D7E /* SettingView.swift */; };
 		D3541A69297902DD00226D7E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3541A68297902DD00226D7E /* SignInView.swift */; };
 		D3541A6B29790EE000226D7E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3541A6A29790EE000226D7E /* SignUpView.swift */; };
+		D3541A6D297A70AF00226D7E /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3541A6C297A70AF00226D7E /* CartView.swift */; };
+		D3541A6F297A742100226D7E /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3541A6E297A742100226D7E /* CartViewModel.swift */; };
+		D3541A71297BA0A000226D7E /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3541A70297BA0A000226D7E /* Cart.swift */; };
 		D390554829767EBA00166467 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390554729767EBA00166467 /* CategoryView.swift */; };
 		D3F5819B2977A85C00BCE7AA /* SubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F5819A2977A85C00BCE7AA /* SubCategoryView.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +84,9 @@
 		D3541A662979023400226D7E /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		D3541A68297902DD00226D7E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		D3541A6A29790EE000226D7E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		D3541A6C297A70AF00226D7E /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		D3541A6E297A742100226D7E /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		D3541A70297BA0A000226D7E /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		D390554729767EBA00166467 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		D3F5819A2977A85C00BCE7AA /* SubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryView.swift; sourceTree = "<group>"; };
 		DBE2768B8706EFF129E1E27E /* Pods_ToDoList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,6 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				D3541A5C2978EF1600226D7E /* User.swift */,
+				D3541A6C297A70AF00226D7E /* CartView.swift */,
+				D3541A6E297A742100226D7E /* CartViewModel.swift */,
+				D3541A70297BA0A000226D7E /* Cart.swift */,
 				D3541A662979023400226D7E /* SettingView.swift */,
 				D301A55D296D19A700A8DF6F /* ToDoListApp.swift */,
 				D301A58E296D326200A8DF6F /* HomeView.swift */,
@@ -457,14 +466,17 @@
 			files = (
 				D301A560296D19A700A8DF6F /* ContentView.swift in Sources */,
 				D301A596296D3A3500A8DF6F /* ApiDataTesting.swift in Sources */,
+				D3541A71297BA0A000226D7E /* Cart.swift in Sources */,
 				D390554829767EBA00166467 /* CategoryView.swift in Sources */,
 				D3541A672979023400226D7E /* SettingView.swift in Sources */,
 				D301A594296D391200A8DF6F /* Color+Extension.swift in Sources */,
 				D301A55E296D19A700A8DF6F /* ToDoListApp.swift in Sources */,
+				D3541A6F297A742100226D7E /* CartViewModel.swift in Sources */,
 				D301A589296D209500A8DF6F /* ContentViewModel.swift in Sources */,
 				D301A58F296D326200A8DF6F /* HomeView.swift in Sources */,
 				D301A58D296D2FB000A8DF6F /* ProductCardView.swift in Sources */,
 				D3541A69297902DD00226D7E /* SignInView.swift in Sources */,
+				D3541A6D297A70AF00226D7E /* CartView.swift in Sources */,
 				D3541A612978F5B800226D7E /* LoginViewModel.swift in Sources */,
 				D3541A5D2978EF1600226D7E /* User.swift in Sources */,
 				D3541A6B29790EE000226D7E /* SignUpView.swift in Sources */,

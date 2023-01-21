@@ -10,9 +10,11 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @State var username: String = ""
-    @State var email: String = ""
-    @State var password: String = ""
+//    @State var username: String = ""
+//    @State var email: String = ""
+//    @State var password: String = ""
+    @ObservedObject var viewModel: LoginViewModel = .init()
+    @State private var showingAlert = false
     
     
     var body: some View {
@@ -34,63 +36,62 @@ struct SignUpView: View {
                 
                 VStack(alignment: .leading) {
                     Text("Username")
-                        .foregroundColor(Color.tertiaryBackground)
                         .font(.system(size: 17, weight: .bold))
                     
                     TextField(
                       "Username",
-                      text:$username
+                      text:$viewModel.username
                     )
                 }
                 .padding()
                 
                 VStack(alignment: .leading) {
                     Text("Email or Phone Number")
-                        .foregroundColor(Color.tertiaryBackground)
                         .font(.system(size: 17, weight: .bold))
                     
                     TextField(
                       "Username/Email",
-                      text: $email
+                      text: $viewModel.email
                     )
                 }
                 .padding()
                 
                 VStack(alignment: .leading) {
                     Text("Password")
-                        .foregroundColor(Color.tertiaryBackground)
+
                         .font(.system(size: 17, weight: .bold))
                     
                     TextField(
                       "Password",
-                      text: $password
+                      text: $viewModel.password
                     )
                 }
                 .padding()
                 
-                NavigationLink {
-//                    print("Sing in")
+                Button {
+                    viewModel.login()
+                    showingAlert = true
                 } label: {
-                    Text("Sing in")
+                    Text("Sign Up")
                         .padding()
                         .foregroundColor(Color.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 40)
-                        .background(Color.tertiaryBackground)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.horizontal)
+                }
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text(loginResult()))
                 }
 
 
                 HStack(alignment: .center) {
                     Text("Already have an account?")
-                        .foregroundColor(Color.tertiaryBackground)
                         .font(.system(size: 12))
                     NavigationLink {
                         
                     } label: {
                         Text("Sign in")
-                            .foregroundColor(Color.tertiaryBackground)
                             .font(.system(size: 12, weight: .bold))
                     }
                 }
@@ -103,9 +104,18 @@ struct SignUpView: View {
             
             Spacer()
         }
+        .foregroundColor(Color.tertiaryBackground)
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.tertiaryBackground)
+    }
+    
+    func loginResult() -> String {
+        if viewModel.loginSuccess {
+            return "Login success"
+        } else {
+            return "Login failed"
+        }
     }
     
 }

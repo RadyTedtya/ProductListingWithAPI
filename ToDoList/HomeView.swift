@@ -15,7 +15,7 @@ struct HomeView: View {
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-        
+        NavigationView {
             VStack(spacing: 10) {
                 ScrollView(.horizontal) {
                     HStack {
@@ -53,7 +53,7 @@ struct HomeView: View {
                     }
                 }
             }
-
+            
             .onAppear {
                 viewModel.resetProducts()
                 viewModel.fetchProductsPagination()
@@ -61,11 +61,11 @@ struct HomeView: View {
             .frame(maxWidth: .infinity)
             .background(Color.primaryBackground)
             .navigationBarItems(trailing:
-                                    Button(action: {
-                print("Bag clicked")
-            }, label: {
-                Image(systemName: "bag")
-            })
+                NavigationLink {
+                    CartView()
+                } label: {
+                    Image(systemName: "bag")
+                }
             )
             .searchable(text: $viewModel.searchText)
             .onSubmit(of: .search) {
@@ -73,8 +73,8 @@ struct HomeView: View {
                 viewModel.fetchProductsPagination()
             }
         }
-
-    
+        .navigationTitle("Home Page")
+    }
 }
 
 
@@ -83,9 +83,4 @@ struct HomeView_Previews: PreviewProvider {
         HomeView()
     }
 }
-
-
-
-
-
 
