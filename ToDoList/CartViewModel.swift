@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class CartViewModel {
+class CartViewModel: ObservableObject {
     
     @Published var checked: Bool = false
     @Published var quantity: Int = 0
@@ -17,6 +17,7 @@ class CartViewModel {
     @Published var loginViewModel: LoginViewModel = .init()
     var isLoading = false
     @Published var user: User = User.dummUser
+    @Published var products: [Product] = []
     
     
     func fetchUserCarts() {
@@ -34,10 +35,6 @@ class CartViewModel {
                     print("Error")
                     return
                 }
-                
-                
-                
-                
                 
             }
         

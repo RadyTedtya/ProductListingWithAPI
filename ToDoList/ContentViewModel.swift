@@ -45,8 +45,6 @@ class ContentViewModel: ObservableObject {
         }
         else if !category.isEmpty {
             fetchString += "/category/\(category)?"
-//            print("category is not empty")
-//            print(category)
         }
         fetchString += "?\(query)"
         AF.request(fetchString)
@@ -72,7 +70,6 @@ class ContentViewModel: ObservableObject {
     func fetchCategories() {
         isLoading = true
         let fetchCategoryQuery = "https://dummyjson.com/products/categories"
-        print(fetchCategoryQuery)
         AF.request(fetchCategoryQuery)
             .responseDecodable(of: [String].self) { cateResponse in
                 defer { self.isLoading = false }
@@ -84,7 +81,6 @@ class ContentViewModel: ObservableObject {
                     self.categories = []
                 }
                 self.categories?.append(contentsOf: cateResponse.value!)
-                print(cateResponse.value!)
             }
     }
     

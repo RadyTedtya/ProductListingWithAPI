@@ -10,10 +10,16 @@ import SwiftUI
 
 struct CartView: View {
     
+    @ObservedObject var loginViewModel: LoginViewModel = .init()
+    @ObservedObject var cartViewModel: CartViewModel = .init()
+    
     var body: some View {
         VStack {
-            CartCardView()
-                .navigationTitle("Carts")
+            ForEach(Array($cartViewModel.products.enumerated()), id: \.offset) { index, product in
+                CartCardView(product: product)
+            }
+            
+            
         }
     }
 }
@@ -21,8 +27,8 @@ struct CartView: View {
 
 struct CartCardView: View  {
     
-    @State var viewModel: CartViewModel = .init()
-    @State var quantity: Int = 0
+    @State var pw: String = ""
+    @Binding var product: Product
     
     var body: some View {
         
@@ -61,7 +67,7 @@ struct CartCardView: View  {
                             
                             TextField(
                                 "Password",
-                                text: $viewModel.test
+                                text: $pw
                             )
                             .clipShape(RoundedRectangle(cornerRadius:40))
                             .multilineTextAlignment(.center)
@@ -88,12 +94,9 @@ struct CartCardView: View  {
         .background(Color.tertiaryBackground)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .padding()
-        
-        
     }
-    
-    
 }
+
 
 
 struct CartCardView_Preview: PreviewProvider {

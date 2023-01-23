@@ -10,8 +10,10 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @ObservedObject var loginViewModel: LoginViewModel = .init()
     @ObservedObject var viewModel: ContentViewModel = .init()
     @State var categories: [String] = ["Trending", "New", "Sale", "Most Sale", "For you"]
+
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
@@ -53,7 +55,6 @@ struct HomeView: View {
                     }
                 }
             }
-            
             .onAppear {
                 viewModel.resetProducts()
                 viewModel.fetchProductsPagination()
@@ -61,11 +62,17 @@ struct HomeView: View {
             .frame(maxWidth: .infinity)
             .background(Color.primaryBackground)
             .navigationBarItems(trailing:
-                NavigationLink {
+
+            NavigationLink {
+                if loginViewModel.loginSuccess {
                     CartView()
-                } label: {
-                    Image(systemName: "bag")
+                } else {
+                    SignInView()
                 }
+            } label: {
+                Image(systemName: "bag")
+            }
+             
             )
             .searchable(text: $viewModel.searchText)
             .onSubmit(of: .search) {
@@ -75,6 +82,8 @@ struct HomeView: View {
         }
         .navigationTitle("Home Page")
     }
+    
+    
 }
 
 

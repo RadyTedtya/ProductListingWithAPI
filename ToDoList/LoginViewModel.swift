@@ -30,8 +30,6 @@ class LoginViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var user: User = User.dummUser
     
-    
-    
 //    typealias MyCompletion = (_ result: Bool, _ second: Int) -> Void
 //
 //    func test(completion: @escaping MyCompletion) {
@@ -63,27 +61,22 @@ class LoginViewModel: ObservableObject {
         isLoading = true
         let loginURL = "https://dummyjson.com/auth/login"
         let header: HTTPHeaders = ["Content-Type" : "application/json"]
-        print("test Defer1")
 
         AF.request(loginURL, method: .post, parameters: UserLoginRequest(username: username, password: password), encoder: .json, headers: header)
             .responseDecodable(of: UserResponse.self) { response in
-                print("test Defer 2")
 
-                defer { self.isLoading = false
-                    print("test Defer 3") }
+                defer { self.isLoading = false }
 
                 guard response.value != nil else {
                     print("error")
-
                     return
                 }
+                
                 print(response.value!)
                 if !(response.value?.token.isEmpty ?? false) {
                     self.loginSuccess = true
                 }
             }
-
-        print("test Defer 4")
     }
     
     func signUp() {
@@ -108,4 +101,5 @@ class LoginViewModel: ObservableObject {
                 }
             }
     }
+    
 }
