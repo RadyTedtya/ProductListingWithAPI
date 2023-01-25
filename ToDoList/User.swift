@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserResponse: Decodable {
+struct LoginResponse: Decodable {
     
     var id: Int
     var username: String
@@ -17,7 +17,7 @@ struct UserResponse: Decodable {
     var gender: String
     var image: String
     var token: String
-    
+    var message: String
 }
 
 

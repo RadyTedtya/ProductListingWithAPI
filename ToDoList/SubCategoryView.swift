@@ -38,3 +38,10 @@ struct SubCategoryView: View {
         .navigationTitle(viewModel.category)
     }
 }
+
+
+struct SubCategoryView_Preview: PreviewProvider {
+    static var previews: some View {
+        SubCategoryView(viewModel: .init())
+    }
+}

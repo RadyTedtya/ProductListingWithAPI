@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SignInView: View {
     
-    @ObservedObject var viewModel: LoginViewModel = .init()
+    @ObservedObject var loginViewModel: LoginViewModel = .init()
     @State private var showingAlert = false
     
     var body: some View {
@@ -36,7 +36,14 @@ struct SignInView: View {
                     
                     TextField(
                         "Username/Email",
-                        text: $viewModel.username
+                        text: $loginViewModel.username
+                    )
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 5)
+                    .overlay(   Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(Color.gray.opacity(0.2)),
+                                alignment: .bottom
                     )
                 }
                 .padding()
@@ -48,14 +55,22 @@ struct SignInView: View {
                     
                     TextField(
                         "Password",
-                        text: $viewModel.password
+                        text: $loginViewModel.password
+                    )
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 5)
+                    .overlay(   Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(Color.gray.opacity(0.2)),
+                                alignment: .bottom
                     )
                 }
                 .padding()
                 
                 Button {
-                    viewModel.login()
                     showingAlert = true
+                    loginViewModel.login()
+                    
                 } label: {
                     Text("Log in")
                         .padding()
@@ -67,7 +82,7 @@ struct SignInView: View {
                         .padding(.horizontal)
                 }
                 .alert(isPresented: $showingAlert) {
-                    Alert(title: Text(loginResult()))
+                    Alert(title: Text(loginViewModel.loginResult.rawValue.capitalized))
                 }
                 
                 Text("Forgot password")
@@ -98,14 +113,6 @@ struct SignInView: View {
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.tertiaryBackground)
-    }
-    
-    func loginResult() -> String {
-        if viewModel.loginSuccess {
-            return "Login success"
-        } else {
-            return "Login failed"
-        }
     }
     
 }

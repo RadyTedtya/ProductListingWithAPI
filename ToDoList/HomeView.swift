@@ -13,7 +13,7 @@ struct HomeView: View {
     @ObservedObject var loginViewModel: LoginViewModel = .init()
     @ObservedObject var viewModel: ContentViewModel = .init()
     @State var categories: [String] = ["Trending", "New", "Sale", "Most Sale", "For you"]
-
+    
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
@@ -33,7 +33,13 @@ struct HomeView: View {
                         }
                     }
                     .frame(maxWidth: .infinity)
+                    .overlay(   Rectangle()
+                        .frame(height: 2)
+                        .foregroundColor(.blue),
+                                alignment: .bottom
+                    )
                 }
+                
                 Spacer()
                 
                 if !(viewModel.products ?? []).isEmpty {
@@ -62,17 +68,18 @@ struct HomeView: View {
             .frame(maxWidth: .infinity)
             .background(Color.primaryBackground)
             .navigationBarItems(trailing:
-
-            NavigationLink {
-                if loginViewModel.loginSuccess {
+                                    NavigationLink {
+                switch loginViewModel.loginResult {
+                case .success:
                     CartView()
-                } else {
+                case .failure:
+                    SignInView()
+                case .loading:
                     SignInView()
                 }
             } label: {
                 Image(systemName: "bag")
             }
-             
             )
             .searchable(text: $viewModel.searchText)
             .onSubmit(of: .search) {

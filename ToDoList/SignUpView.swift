@@ -42,6 +42,13 @@ struct SignUpView: View {
                       "Username",
                       text:$viewModel.username
                     )
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 5)
+                    .overlay(   Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(Color.gray.opacity(0.2)),
+                                alignment: .bottom
+                    )
                 }
                 .padding()
                 
@@ -53,6 +60,14 @@ struct SignUpView: View {
                       "Username/Email",
                       text: $viewModel.email
                     )
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 5)
+                    .overlay(   Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(Color.gray.opacity(0.2)),
+                                alignment: .bottom
+                    )
+                    
                 }
                 .padding()
                 
@@ -64,6 +79,13 @@ struct SignUpView: View {
                     TextField(
                       "Password",
                       text: $viewModel.password
+                    )
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 5)
+                    .overlay(   Rectangle()
+                        .frame(height: 1)
+                        .foregroundColor(Color.gray.opacity(0.2)),
+                                alignment: .bottom
                     )
                 }
                 .padding()
@@ -77,11 +99,12 @@ struct SignUpView: View {
                         .foregroundColor(Color.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 40)
+                        .background(Color.tertiaryBackground)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                         .padding(.horizontal)
                 }
                 .alert(isPresented: $showingAlert) {
-                    Alert(title: Text(loginResult()))
+                    Alert(title: Text(viewModel.loginResult.rawValue))
                 }
 
 
@@ -110,13 +133,6 @@ struct SignUpView: View {
         .background(Color.tertiaryBackground)
     }
     
-    func loginResult() -> String {
-        if viewModel.loginSuccess {
-            return "Login success"
-        } else {
-            return "Login failed"
-        }
-    }
     
 }
 

@@ -66,6 +66,11 @@ class ContentViewModel: ObservableObject {
         products = []
         page = 0
     }
+    
+    func resetCategories() {
+        categories = []
+        category = ""
+    }
 
     func fetchCategories() {
         isLoading = true
@@ -77,6 +82,7 @@ class ContentViewModel: ObservableObject {
                     print("error")
                     return
                 }
+                
                 if self.categories == nil {
                     self.categories = []
                 }
@@ -87,9 +93,6 @@ class ContentViewModel: ObservableObject {
 
     
 }
-
-
-
 //  MARK: - API URL
 //  https://dummyjson.com/products
 //  https://dummyjson.com/products/search?limit=10&skip=0&q=phone

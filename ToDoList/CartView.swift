@@ -18,8 +18,6 @@ struct CartView: View {
             ForEach(Array($cartViewModel.products.enumerated()), id: \.offset) { index, product in
                 CartCardView(product: product)
             }
-            
-            
         }
     }
 }

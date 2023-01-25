@@ -61,7 +61,6 @@ struct ProductCardView: View {
                 Text(String(product.rating ?? 0.0))
                     .foregroundColor(Color.black)
                     .font(.system(size: 10.5))
-                
             }
         }
         .padding()

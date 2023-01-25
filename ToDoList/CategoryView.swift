@@ -15,30 +15,41 @@ struct CategoryView: View {
     var body: some View {
         
         NavigationView {
-            List {
-                ForEach(viewModel.categories!, id: \.self) { category in
-                    NavigationLink {
-                        SubCategoryView(viewModel: viewModel)
-                            .onAppear {
-                                viewModel.resetProducts()
-                                viewModel.category = category
-                            }
-                    } label: {
-                        Text(category)
-                            .font(.system(size: 15))
-                            .foregroundColor(Color.black)
-                            
+            VStack {
+                Text("Categories")
+                    .font(.system(size: 30, weight: .bold))
+                List {
+                    ForEach(viewModel.categories!, id: \.self) { category in
+                        NavigationLink {
+                            SubCategoryView(viewModel: viewModel)
+                                .onAppear {
+                                    viewModel.resetProducts()
+                                    viewModel.category = category
+                                }
+                        } label: {
+                            Text(category.capitalized)
+                                .font(.system(size: 15))
+                                .foregroundColor(Color.black)
+                        }
                     }
                 }
-
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .onAppear {
-                viewModel.resetProducts()
-                viewModel.fetchCategories()
+                .background(Color.white)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onAppear {
+                    viewModel.resetCategories()
+                    viewModel.resetProducts()
+                    viewModel.fetchCategories()
+                }
             }
             
         }
         .navigationTitle("Product Categories")
+    }
+}
+
+
+struct CategoryView_Preview: PreviewProvider {
+    static var previews: some View {
+        CategoryView()
     }
 }
