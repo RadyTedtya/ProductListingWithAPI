@@ -19,6 +19,7 @@ struct CartView: View {
                 CartCardView(product: product)
             }
         }
+        .onAppear()
     }
 }
 
@@ -36,7 +37,6 @@ struct CartCardView: View  {
                 Image(systemName: "house")
                 Text("Shop name")
             } .padding(.bottom)
-            
             
             HStack {
                 Image(systemName: "checkmark.circle")

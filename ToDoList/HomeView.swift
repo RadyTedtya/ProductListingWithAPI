@@ -35,7 +35,7 @@ struct HomeView: View {
                     .frame(maxWidth: .infinity)
                     .overlay(   Rectangle()
                         .frame(height: 2)
-                        .foregroundColor(.blue),
+                        .foregroundColor(Color.secondaryColor),
                                 alignment: .bottom
                     )
                 }

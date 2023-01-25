@@ -16,7 +16,6 @@ class CartViewModel: ObservableObject {
     @Published var loggedIn: Bool = false
     @Published var loginViewModel: LoginViewModel = .init()
     var isLoading = false
-    @Published var user: User = User.dummUser
     @Published var products: [Product] = []
     
     
@@ -24,8 +23,9 @@ class CartViewModel: ObservableObject {
         isLoading = true
         
         let url = "https://dummyjson.com/carts/user"
-        let userID:Int = user.id
+        let userID:Int = loginViewModel.user.id
         let fetchCartURL = url + String(userID)
+        print(fetchCartURL)
         
         AF.request(fetchCartURL)
             .responseDecodable(of: CartResponse.self) { response in

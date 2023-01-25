@@ -10,18 +10,23 @@ import SwiftUI
 
 struct SettingView: View {
     var body: some View {
-        NavigationView {
+        
+        
+        VStack(alignment: .leading) {
+            
+            
+            Image(systemName: "person.crop.circle.fill")
+                .resizable()
+                .frame(width:50 ,height: 50)
+                .padding(.bottom)
+            
+            Text("Tedtya RADY")
+            
+            Spacer()
+            
+            
             List {
                 VStack(alignment: .leading, spacing: 30) {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .frame(width:50 ,height: 50)
-                        .padding(.bottom)
-                    
-                    Text("Tedtya RADY")
-                    
-                    Spacer()
-                    
                     NavigationLink {
                         SignInView()
                     } label: {
@@ -33,7 +38,7 @@ struct SettingView: View {
                                 .foregroundColor(Color.gray.opacity(0.2)),
                                         alignment: .bottom
                             )
-
+                        
                     }
                     
                     NavigationLink {
@@ -77,9 +82,9 @@ struct SettingView: View {
                     }
                     
                     NavigationLink {
-                        SignInView()
+                        CartView()
                     } label: {
-                        Text("About App")
+                        Text("Cart")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.bottom, 5)
                             .overlay(   Rectangle()
@@ -88,16 +93,16 @@ struct SettingView: View {
                                         alignment: .bottom
                             )
                     }
-
                     
-
+                    
+                    
                 }
-                .padding()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
+            
         }
     }
 }
+
 
 
 struct SettingView_Preview: PreviewProvider {
