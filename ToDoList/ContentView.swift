@@ -39,7 +39,7 @@ struct ContentView: View {
                 }
             
             
-            HomeView(viewModel: viewModel)
+            CartView()
                 .tabItem {
                     Image(systemName: "heart")
                 }.onAppear{

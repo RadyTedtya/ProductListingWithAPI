@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Kingfisher
 
 struct CartView: View {
     
@@ -14,12 +15,16 @@ struct CartView: View {
     @ObservedObject var cartViewModel: CartViewModel = .init()
     
     var body: some View {
-        VStack {
-            ForEach(Array($cartViewModel.products.enumerated()), id: \.offset) { index, product in
-                CartCardView(product: product)
+        ScrollView {
+            VStack (alignment: .leading) {
+                ForEach(Array($cartViewModel.carts.enumerated()), id: \.offset) { index, cart in
+                    CartCardView(cart: cart)
+                }
+            }
+            .onAppear {
+                cartViewModel.fetchUserCarts()
             }
         }
-        .onAppear()
     }
 }
 
@@ -27,78 +32,244 @@ struct CartView: View {
 struct CartCardView: View  {
     
     @State var pw: String = ""
-    @Binding var product: Product
+    @Binding var cart: Cart
     
     var body: some View {
         
-        VStack(alignment: .leading) {
+        VStack {
             HStack {
                 Image(systemName: "checkmark.circle")
                 Image(systemName: "house")
-                Text("Shop name")
-            } .padding(.bottom)
-            
-            HStack {
-                Image(systemName: "checkmark.circle")
                 
-                Image(systemName: "iphone")
-                    .resizable()
+            }
+            ForEach(Array($cart.products.enumerated()), id: \.offset) { index, product in
+                ProductsCart(product: product, index: index)
                     .padding()
-                    .frame(width: 100, height: 100)
-                
-                VStack {
-                    Text("Test test test test test test test ")
-                        .multilineTextAlignment(.leading)
-                    
-                    HStack {
-                        Text("$ ")
-                        
-                        Text("193.00")
-                        
-                        HStack {
-                            Button {
-                                print("-")
-                            } label: {
-                                Text("-")
-                            }
-                            
-                            
-                            TextField(
-                                "Password",
-                                text: $pw
-                            )
-                            .clipShape(RoundedRectangle(cornerRadius:40))
-                            .multilineTextAlignment(.center)
-                            .frame(width: 33, height: 25)
-                            
-                            .font(.system(size: 15))
-                            .border(.white)
-                            
-                            
-                            Button {
-                                print("+")
-                            } label: {
-                                Text("+")
-                            }
-                        }
-                        .frame(width: 100)
-                    }
-                }
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 100)
+                    .background(Color.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .shadow(radius: 10)
+                    .padding()
                 
             }
         }
-        .foregroundColor(Color.white)
-        .padding()
-        .background(Color.tertiaryBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 10))
-        .padding()
     }
 }
 
 
 
-struct CartCardView_Preview: PreviewProvider {
-    static var previews: some View {
-        CartView()
+struct ProductsCart: View {
+    @Binding var product: Product
+    @State var quantity: String = ""
+    @State var index: Int = 0
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "checkmark.circle")
+            
+//            product.images?.count ?? 0 > 0 ? AnyView(KFImage(URL(string: product.images![0]))
+//                .resizable()
+//                .padding()
+//                .frame(width: 100, height: 100))
+//            : AnyView(Image("iphone")
+//                .resizable()
+//                .padding()
+//                .frame(width: 100, height: 100))
+            
+            VStack {
+                Text(product.description ?? "")
+                    .multilineTextAlignment(.leading)
+                
+                HStack {
+                    Text("$ ")
+                    Text(String(product.price))
+                    HStack {
+                        Button {
+                            print("-")
+                        } label: {
+                            Text("-")
+                        }
+
+                        TextField(
+                            "0",
+                            text: $quantity
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius:40))
+                        .multilineTextAlignment(.center)
+                        .frame(width: 33, height: 25)
+                        
+                        .font(.system(size: 15))
+                        .border(.white)
+                        
+                        Button {
+                            print("+")
+                        } label: {
+                            Text("+")
+                        }
+                    }
+                    .frame(width: 100)
+                }
+            }
+        }
     }
 }
+
+
+
+/*
+ 
+ // MARK: - Inside product cart
+ VStack(alignment: .leading) {
+     HStack {
+         Image(systemName: "checkmark.circle")
+         Image(systemName: "house")
+         Text("Shop name")
+     } .padding(.bottom)
+     
+     HStack {
+         Image(systemName: "checkmark.circle")
+         
+         Image(systemName: "iphone")
+             .resizable()
+             .padding()
+             .frame(width: 100, height: 100)
+         
+         VStack {
+             Text("Test test test test test test test ")
+                 .multilineTextAlignment(.leading)
+             
+             
+         }
+         
+     }
+ }
+ .foregroundColor(Color.white)
+ .padding()
+ .background(Color.tertiaryBackground)
+ .clipShape(RoundedRectangle(cornerRadius: 10))
+ .padding()
+ 
+ 
+ 
+ 
+ VStack(alignment: .leading) {
+ HStack {
+     Image(systemName: "checkmark.circle")
+     Image(systemName: "house")
+     Text("Shop name")
+ } .padding(.bottom)
+ 
+ HStack {
+     Image(systemName: "checkmark.circle")
+     
+     Image(systemName: "iphone")
+         .resizable()
+         .padding()
+         .frame(width: 100, height: 100)
+     
+     VStack {
+         Text("Test test test test test test test ")
+             .multilineTextAlignment(.leading)
+         
+         HStack {
+             Text("$ ")
+             
+             Text("193.00")
+             
+             HStack {
+                 Button {
+                     print("-")
+                 } label: {
+                     Text("-")
+                 }
+                 
+                 
+                 TextField(
+                     "Password",
+                     text: $pw
+                 )
+                 .clipShape(RoundedRectangle(cornerRadius:40))
+                 .multilineTextAlignment(.center)
+                 .frame(width: 33, height: 25)
+                 
+                 .font(.system(size: 15))
+                 .border(.white)
+                 
+                 Button {
+                     print("+")
+                 } label: {
+                     Text("+")
+                 }
+             }
+             .frame(width: 100)
+         }
+     }
+     
+ }
+}
+.foregroundColor(Color.white)
+.padding()
+.background(Color.tertiaryBackground)
+.clipShape(RoundedRectangle(cornerRadius: 10))
+.padding()VStack(alignment: .leading) {
+ HStack {
+     Image(systemName: "checkmark.circle")
+     Image(systemName: "house")
+     Text("Shop name")
+ } .padding(.bottom)
+ 
+ HStack {
+     Image(systemName: "checkmark.circle")
+     
+     Image(systemName: "iphone")
+         .resizable()
+         .padding()
+         .frame(width: 100, height: 100)
+     
+     VStack {
+         Text("Test test test test test test test ")
+             .multilineTextAlignment(.leading)
+         
+         HStack {
+             Text("$ ")
+             
+             Text("193.00")
+             
+             HStack {
+                 Button {
+                     print("-")
+                 } label: {
+                     Text("-")
+                 }
+                 
+                 
+                 TextField(
+                     "Password",
+                     text: $pw
+                 )
+                 .clipShape(RoundedRectangle(cornerRadius:40))
+                 .multilineTextAlignment(.center)
+                 .frame(width: 33, height: 25)
+                 
+                 .font(.system(size: 15))
+                 .border(.white)
+                 
+                 Button {
+                     print("+")
+                 } label: {
+                     Text("+")
+                 }
+             }
+             .frame(width: 100)
+         }
+     }
+     
+ }
+}
+.foregroundColor(Color.white)
+.padding()
+.background(Color.tertiaryBackground)
+.clipShape(RoundedRectangle(cornerRadius: 10))
+.padding()
+ */

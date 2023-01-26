@@ -23,6 +23,15 @@ struct Cart: Decodable, Identifiable {
     var discountedTotal: Double
     var userId: Int
     var totalProducts: Int
-    var totalQuanity: Int
+    var totalQuantity: Int
+    
+    
+//    var dummProducts: [Product]  = [Product.dummyProduct]
+    
+//    var dummCart: Cart = .init(id: 4, products: , total: 4, discountedTotal: 3, userId: 1, totalProducts: 5, totalQuantity: 4)
     
 }
+
+
+
+

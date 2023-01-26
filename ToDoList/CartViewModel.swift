@@ -11,29 +11,38 @@ import Alamofire
 class CartViewModel: ObservableObject {
     
     @Published var checked: Bool = false
-    @Published var quantity: Int = 0
+//    @Published var quantity: Int = 0
     @Published var test: String = "0"
     @Published var loggedIn: Bool = false
     @Published var loginViewModel: LoginViewModel = .init()
-    var isLoading = false
+    @Published var isLoading = false
     @Published var products: [Product] = []
+    @Published var carts: [Cart] = []
     
     
     func fetchUserCarts() {
         isLoading = true
         
-        let url = "https://dummyjson.com/carts/user"
+        let url = "https://dummyjson.com/carts/user/"
         let userID:Int = loginViewModel.user.id
         let fetchCartURL = url + String(userID)
-        print(fetchCartURL)
         
         AF.request(fetchCartURL)
-            .responseDecodable(of: CartResponse.self) { response in
+            .responseDecodable(of: CartResponse.self) { cartResponse in
                 
-                defer {self.isLoading = false }
-                guard response.value != nil else {
+                defer {self.isLoading = false
+                    print("Number of carts: " + String(self.carts.count))
+                }
+//                guard response.value != nil else {
+//                    print("Error")
+//                    return
+//                }
+                
+                if cartResponse.value != nil {
+                    print("fetched cart success")
+                    self.carts.append(contentsOf: cartResponse.value?.carts ?? [])
+                } else {
                     print("Error")
-                    return
                 }
                 
             }

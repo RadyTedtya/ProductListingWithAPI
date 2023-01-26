@@ -67,20 +67,29 @@ struct HomeView: View {
             }
             .frame(maxWidth: .infinity)
             .background(Color.primaryBackground)
+//            .navigationBarItems(trailing:
+//                                    NavigationLink {
+//                switch loginViewModel.loginResult {
+//                case .success:
+//                    CartView()
+//                case .failure:
+//                    SignInView()
+//                case .loading:
+//                    SignInView()
+//                }
+//            } label: {
+//                Image(systemName: "bag")
+//            }
+//            )
             .navigationBarItems(trailing:
-                                    NavigationLink {
-                switch loginViewModel.loginResult {
-                case .success:
-                    CartView()
-                case .failure:
-                    SignInView()
-                case .loading:
-                    SignInView()
-                }
+                NavigationLink {
+                    CartView(loginViewModel: loginViewModel)
             } label: {
                 Image(systemName: "bag")
             }
+                                
             )
+            
             .searchable(text: $viewModel.searchText)
             .onSubmit(of: .search) {
                 viewModel.resetProducts()
