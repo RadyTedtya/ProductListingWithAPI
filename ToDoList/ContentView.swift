@@ -39,7 +39,7 @@ struct ContentView: View {
                 }
             
             
-            FavoriteView()
+            FavouriteView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "heart")
                 }.onAppear{
