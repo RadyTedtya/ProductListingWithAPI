@@ -39,7 +39,7 @@ struct ContentView: View {
                 }
             
             
-            CartView()
+            FavoriteView()
                 .tabItem {
                     Image(systemName: "heart")
                 }.onAppear{

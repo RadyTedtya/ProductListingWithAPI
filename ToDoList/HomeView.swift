@@ -12,7 +12,7 @@ struct HomeView: View {
     
     @ObservedObject var loginViewModel: LoginViewModel = .init()
     @ObservedObject var viewModel: ContentViewModel = .init()
-    @State var categories: [String] = ["New", "Sale"]
+    @State var categories: [String] = ["All","New", "Sale"]
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -21,22 +21,21 @@ struct HomeView: View {
             VStack(spacing: 10) {
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(categories, id: \.self) { type in
-                            Button {
-                                print(type)
-                            } label: {
-                                Text(type)
-
+                        Picker("Product Display Type", selection: $viewModel.selectedDisplayType){
+                            ForEach(DisplayProductType.allCases) {
+                                Text($0.rawValue.capitalized)
+                                Spacer()
                             }
                         }
+                        .pickerStyle(.segmented)
                     }
-                    .frame(maxWidth: .infinity)
                     .overlay(   Rectangle()
                         .frame(height: 2)
                         .foregroundColor(Color.secondaryColor),
                                 alignment: .bottom
                     )
                 }
+                .frame(maxWidth: .infinity)
                 
                 Spacer()
                 
@@ -44,16 +43,24 @@ struct HomeView: View {
                     ScrollView(.vertical) {
                         VStack {
                             LazyVGrid(columns: columns) {
+                                
+                                
                                 ForEach(Array(viewModel.products!.enumerated()), id: \.offset) { index, product in
                                     NavigationLink {
-                                        ProductDetailView(product: product)
+                                        ProductDetailView(product: product, viewModel: viewModel)
                                     } label: {
-                                        ProductCardView(product: product)
+                                        ProductCardView(product: product, viewModel: viewModel)
                                             .onAppear {
                                                 viewModel.loadMoreContent(currentIndex: index)
                                             }
                                     }
                                 }
+                                
+                                
+                                
+                                
+                                
+                                
                             }
                         }
                     }

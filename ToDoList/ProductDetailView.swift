@@ -10,6 +10,7 @@ import Kingfisher
 
 struct ProductDetailView: View {
     @State var product: Product = Product.dummyProduct
+    @ObservedObject var viewModel: ContentViewModel = .init()
     
     var body: some View {
         ScrollView {
@@ -71,10 +72,14 @@ struct ProductDetailView: View {
                     }
                     
                     HStack() {
-                        Image(systemName: "heart.square.fill")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(Color.secondaryColor)
+                        Button {
+                            viewModel.favoriteProducts.append(product)
+                        } label: {
+                            Image(systemName: "heart.square.fill")
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color.secondaryColor)
+                        }
                         
                         
                         Button {

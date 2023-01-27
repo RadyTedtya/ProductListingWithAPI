@@ -17,6 +17,9 @@ class ContentViewModel: ObservableObject {
     @Published var categories: [String]? = []
     @Published var category: String = ""
     @Published var users: [User]? = nil
+    @Published var selectedDisplayType: DisplayProductType = .all
+    @Published var favoriteProducts: [Product] = .init()
+    
     
     
     private var _hasMoreItem: Bool = false
@@ -100,3 +103,5 @@ class ContentViewModel: ObservableObject {
 //  https://dummyjson.com/products/search?limit=10&skip=0&q=phone
 //  https://dummyjson.com/products/category/smartphones?limit=10&skip=0
     
+
+

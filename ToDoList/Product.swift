@@ -38,11 +38,16 @@ struct Product: Identifiable, Decodable {
         "https://i.dummyjson.com/data/products/12/4.jpg",
         "https://i.dummyjson.com/data/products/12/thumbnail.jpg"]
     
-    
-//    static let dummyProduct: Product = .init(id: 0, title: "iPhone  XS", description: "This is an Iphone XS MAX", price: 400, discountPercentage: 250, rating: 4.2, images: dummyImages, category: "smartphone", quantity: 4, total: 4.0)
-    
-    
     static let dummyProduct: Product = .init(id: 0, title: "iPhone  XS", description: "This is an Iphone XS MAX", price: 400, discountPercentage: 250, rating: 4.2, images: dummyImages, category: "smartphone")
 }
+
+enum DisplayProductType: String, CaseIterable, Identifiable {
+    case all, trending, sale
+    var id: Self {
+        return self
+    }
+}
+
+
 
 

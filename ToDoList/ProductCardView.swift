@@ -11,6 +11,7 @@ import Kingfisher
 struct ProductCardView: View {
     
     var product: Product
+    @ObservedObject var viewModel: ContentViewModel = .init()
     
     var body: some View {
         VStack(spacing: 10) {
@@ -29,7 +30,7 @@ struct ProductCardView: View {
                 
                 
                 Button {
-                    print("Liked")
+                    viewModel.favoriteProducts.append(product)
                 } label: {
                     Image(systemName: "heart")
                         .foregroundColor(Color.primary)
