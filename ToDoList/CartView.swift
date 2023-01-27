@@ -36,25 +36,22 @@ struct CartCardView: View  {
     
     var body: some View {
         
-        VStack {
-            HStack {
-                Image(systemName: "checkmark.circle")
-                Image(systemName: "house")
-                
-            }
+        VStack(alignment: .leading) {
+            
             ForEach(Array($cart.products.enumerated()), id: \.offset) { index, product in
                 ProductsCart(product: product, index: index)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 100)
-                    .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .shadow(radius: 10)
-                    .padding()
-                
             }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .frame(height: 100)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .shadow(radius: 10)
+            .padding()
         }
+        .navigationTitle("Carts")
     }
+        
 }
 
 
@@ -67,18 +64,10 @@ struct ProductsCart: View {
     var body: some View {
         HStack {
             Image(systemName: "checkmark.circle")
+                .padding(.horizontal, 20)
             
-//            product.images?.count ?? 0 > 0 ? AnyView(KFImage(URL(string: product.images![0]))
-//                .resizable()
-//                .padding()
-//                .frame(width: 100, height: 100))
-//            : AnyView(Image("iphone")
-//                .resizable()
-//                .padding()
-//                .frame(width: 100, height: 100))
-            
-            VStack {
-                Text(product.description ?? "")
+            VStack(alignment: .leading) {
+                Text(product.title)
                     .multilineTextAlignment(.leading)
                 
                 HStack {
@@ -110,8 +99,16 @@ struct ProductsCart: View {
                     }
                     .frame(width: 100)
                 }
+                .font(.system(size: 18, weight: .bold))
+                .foregroundColor(Color.secondaryColor)
             }
         }
+    }
+}
+
+struct ProductsCart_Preview: PreviewProvider {
+    static var previews: some View {
+        ProductsCart(product: .constant(Product.dummyProduct))
     }
 }
 

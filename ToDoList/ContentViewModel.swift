@@ -90,7 +90,9 @@ class ContentViewModel: ObservableObject {
             }
     }
     
-
+//    func filterProduct() {
+//        
+//    }
     
 }
 //  MARK: - API URL

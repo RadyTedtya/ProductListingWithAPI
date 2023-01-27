@@ -12,7 +12,7 @@ struct HomeView: View {
     
     @ObservedObject var loginViewModel: LoginViewModel = .init()
     @ObservedObject var viewModel: ContentViewModel = .init()
-    @State var categories: [String] = ["Trending", "New", "Sale", "Most Sale", "For you"]
+    @State var categories: [String] = ["New", "Sale"]
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -21,14 +21,12 @@ struct HomeView: View {
             VStack(spacing: 10) {
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(categories, id: \.self) { id in
+                        ForEach(categories, id: \.self) { type in
                             Button {
-                                print("clicked \(id)")
+                                print(type)
                             } label: {
-                                Text(id)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .foregroundColor(Color.secondaryColor)
-                                    .padding()
+                                Text(type)
+
                             }
                         }
                     }
