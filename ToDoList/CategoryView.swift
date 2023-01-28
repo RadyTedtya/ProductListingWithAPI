@@ -16,8 +16,6 @@ struct CategoryView: View {
         
         NavigationView {
             VStack {
-                Text("Categories")
-                    .font(.system(size: 30, weight: .bold))
                 List {
                     ForEach(viewModel.categories!, id: \.self) { category in
                         NavigationLink {
@@ -41,9 +39,9 @@ struct CategoryView: View {
                     viewModel.fetchCategories()
                 }
             }
-            
+            .navigationTitle("Product Categories")
         }
-        .navigationTitle("Product Categories")
+        
     }
 }
 

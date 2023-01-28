@@ -101,10 +101,8 @@ struct HomeView: View {
                 viewModel.fetchProductsPagination()
             }
         }
-        .navigationTitle("Home Page")
+        
     }
-    
-    
 }
 
 

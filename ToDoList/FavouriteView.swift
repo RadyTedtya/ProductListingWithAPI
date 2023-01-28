@@ -14,16 +14,18 @@ struct FavouriteView: View {
     @ObservedObject var viewModel:ContentViewModel = .init()
     
     var body: some View {
-            
-        ScrollView {
-            VStack {
-                
-                ForEach(viewModel.products ?? [] ) { product in
-                    ProductRow(product: product, viewModel: viewModel)
+        
+        NavigationView {
+            ScrollView {
+                VStack {
+                    ForEach(viewModel.products ?? [] ) { product in
+                        ProductRow(product: product, viewModel: viewModel)
+                    }
                 }
             }
+            .navigationTitle("Favourtie Products")
         }
-        .navigationTitle("Favorite Products")
+        
     }
     
 }
@@ -79,7 +81,6 @@ struct ProductRow: View {
         .shadow(radius: 10)
         .padding(.horizontal, 20)
         .padding(.vertical, 5)
-        
     }
     
     

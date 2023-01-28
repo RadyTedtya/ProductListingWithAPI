@@ -27,79 +27,13 @@ struct SettingView: View {
             
             List {
                 VStack(alignment: .leading, spacing: 30) {
-                    NavigationLink {
-                        SignInView()
-                    } label: {
-                        Text("Log in")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom, 5)
-                            .overlay(   Rectangle()
-                                .frame(height: 1)
-                                .foregroundColor(Color.gray.opacity(0.2)),
-                                        alignment: .bottom
-                            )
-                        
-                    }
-                    
-                    NavigationLink {
-                        SignInView()
-                    } label: {
-                        Text("Sign up")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom, 5)
-                            .overlay(   Rectangle()
-                                .frame(height: 1)
-                                .foregroundColor(Color.gray.opacity(0.2)),
-                                        alignment: .bottom
-                            )
-                    }
-                    
-                    NavigationLink {
-                        SignInView()
-                    } label: {
-                        Text("Notification")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom, 5)
-                            .overlay(   Rectangle()
-                                .frame(height: 1)
-                                .foregroundColor(Color.gray.opacity(0.2)),
-                                        alignment: .bottom
-                            )
-                    }
-                    
-                    
-                    NavigationLink {
-                        SignInView()
-                    } label: {
-                        Text("Language")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom, 5)
-                            .overlay(   Rectangle()
-                                .frame(height: 1)
-                                .foregroundColor(Color.gray.opacity(0.2)),
-                                        alignment: .bottom
-                            )
-                    }
-                    
-                    NavigationLink {
-                        CartView()
-                    } label: {
-                        Text("Cart")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.bottom, 5)
-                            .overlay(   Rectangle()
-                                .frame(height: 1)
-                                .foregroundColor(Color.gray.opacity(0.2)),
-                                        alignment: .bottom
-                            )
-                    }
-                    
-                    
                     
                 }
             }
             
         }
+        .padding()
+        .padding()
     }
 }
 
