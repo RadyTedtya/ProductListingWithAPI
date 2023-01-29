@@ -24,7 +24,6 @@ struct ContentView: View {
                 }.onAppear{
                     viewModel.resetProducts()
                     viewModel.fetchProductsPagination()
-                    print("0")
                 }
             
             CategoryView(viewModel: viewModel)
@@ -33,15 +32,14 @@ struct ContentView: View {
                 }.onAppear{
                     viewModel.resetCategories()
                     viewModel.fetchProductsPagination()
-                    print("1")
                 }
             
             
             FavouriteView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "heart")
-                }.onAppear{
-                    print(0)
+                }.onAppear {
+                    
                 }
             
             SettingView()
@@ -52,6 +50,7 @@ struct ContentView: View {
         .accentColor(Color.tertiaryBackground)
         .onAppear() {
             UITabBar.appearance().barTintColor = UIColor(Color.primaryColor)
+            
         }
         
     }

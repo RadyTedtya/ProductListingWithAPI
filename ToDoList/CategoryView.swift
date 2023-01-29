@@ -31,7 +31,7 @@ struct CategoryView: View {
                         }
                     }
                 }
-                .background(Color.white)
+                
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .onAppear {
                     viewModel.resetCategories()

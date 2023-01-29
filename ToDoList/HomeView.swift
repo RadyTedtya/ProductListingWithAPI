@@ -12,26 +12,28 @@ struct HomeView: View {
     
     @ObservedObject var loginViewModel: LoginViewModel = .init()
     @ObservedObject var viewModel: ContentViewModel = .init()
-    //    @State var categories: [String] = ["All","New", "Sale"]
+//    @State var categories: [String] = ["All","New", "Sale"]
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
-                Picker("Product Display Type", selection: $viewModel.selectedDisplayType){
-                    ForEach(DisplayProductType.allCases) {
-                        Text($0.rawValue.capitalized)
-                        Spacer()
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                .pickerStyle(SegmentedPickerStyle())
-                .overlay(   Rectangle()
-                    .frame(height: 2)
-                    .foregroundColor(Color.secondaryColor),
-                            alignment: .bottom
-                )
+                        Picker(selection: $viewModel.selectedDisplayType, label: Text("")){
+                            ForEach(DisplayProductType.allCases) {
+                                Text($0.rawValue.capitalized)
+                                    
+                                    .tag($0.id)
+                                    
+                            }
+                        }
+                        .foregroundColor(Color.black)
+                        .pickerStyle(SegmentedPickerStyle())
+                        .overlay(   Rectangle()
+                        .frame(height: 2)
+                        .foregroundColor(Color.secondaryColor),
+                                alignment: .bottom
+                    )
                 
                 Spacer()
                 
@@ -62,8 +64,8 @@ struct HomeView: View {
             .frame(maxWidth: .infinity)
             .background(Color.primaryBackground)
             .navigationBarItems(trailing:
-            NavigationLink {
-                CartView(loginViewModel: loginViewModel)
+                NavigationLink {
+                    CartView(loginViewModel: loginViewModel)
             } label: {
                 Image(systemName: "bag")
             }
@@ -76,7 +78,6 @@ struct HomeView: View {
             .onAppear() {
                 UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.tertiaryBackground)
                 UISegmentedControl.appearance().backgroundColor = UIColor(Color.primaryColor)
-                
             }
         }
         

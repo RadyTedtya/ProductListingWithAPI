@@ -25,6 +25,7 @@ struct FavouriteView: View {
                         ProductRow(product: product, viewModel: viewModel)
                     }
                 }
+                .background(Color.white)
             }
             .navigationTitle("Favourtie Products")
         }

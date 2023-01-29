@@ -43,6 +43,7 @@ struct SettingView: View {
                 }
                 
             }
+            .background(Color.white)
             .padding()
             .padding()
         }
