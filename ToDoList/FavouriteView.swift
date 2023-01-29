@@ -18,7 +18,10 @@ struct FavouriteView: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    ForEach(viewModel.products ?? [] ) { product in
+//                    ForEach(viewModel.products ?? [] ) { product in
+//                        ProductRow(product: product, viewModel: viewModel)
+//                    }
+                    ForEach(viewModel.favoriteProducts) { product in
                         ProductRow(product: product, viewModel: viewModel)
                     }
                 }

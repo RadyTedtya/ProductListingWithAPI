@@ -86,10 +86,9 @@ struct ProductsCart: View {
                         )
                         .clipShape(RoundedRectangle(cornerRadius:40))
                         .multilineTextAlignment(.center)
+                        .border(.gray, width: 1)
                         .frame(width: 33, height: 25)
-                        
                         .font(.system(size: 15))
-                        .border(.white)
                         
                         Button {
                             print("+")

@@ -24,39 +24,12 @@ class LoginViewModel: ObservableObject {
     
     
     @Published var loginResult: LoginResultType = .loading
-//    @Published var username: String = "kminchelle"
-    @Published var username: String = "kminchell"
+    @Published var username: String = "kminchelle"
     @Published var password: String = "0lelplR"
     @Published var email: String = "0lelplR"
     @Published var DoB: String = "12 Jan 1999"
     @Published var isLoading: Bool = false
     @Published var user: User = User.dummUser
-    
-    //    typealias MyCompletion = (_ result: Bool, _ second: Int) -> Void
-    //
-    //    func test(completion: @escaping MyCompletion) {
-    //        DispatchQueue.global(qos: .background).async {
-    //            completion(false, 12)
-    //            print("1")
-    //            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-    //                completion(true, 2)
-    //            }
-    //            print("2")
-    //        }
-    //    }
-    //
-    //    func login() {
-    //        print("3")
-    //        test { result, second in
-    //            if result {
-    //                print("I ('m here now)")
-    //            } else {
-    //                print("H (ello there)")
-    //            }
-    //
-    //        }
-    //        print("4")
-    // 3 1 2 4 I H
     
     
     
@@ -112,4 +85,33 @@ class LoginViewModel: ObservableObject {
 enum LoginResultType: String {
     case success, failure, loading
 }
+
+
+// MARK: - Syn, Asyn, Main thread, Background thread, Closure
+
+//    typealias MyCompletion = (_ result: Bool, _ second: Int) -> Void
+//
+//    func test(completion: @escaping MyCompletion) {
+//        DispatchQueue.global(qos: .background).async {
+//            completion(false, 12)
+//            print("1")
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                completion(true, 2)
+//            }
+//            print("2")
+//        }
+//    }
+//
+//    func login() {
+//        print("3")
+//        test { result, second in
+//            if result {
+//                print("I ('m here now)")
+//            } else {
+//                print("H (ello there)")
+//            }
+//
+//        }
+//        print("4")
+// 3 1 2 4 I H
 
