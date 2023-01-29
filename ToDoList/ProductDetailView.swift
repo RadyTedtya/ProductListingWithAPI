@@ -36,7 +36,7 @@ struct ProductDetailView: View {
                         Spacer()
                         Image(systemName: "star")
                         Text(String(product.rating ?? 0.0))
-                            .foregroundColor(Color.primary)
+                            .foregroundColor(Color.tertiaryBackground)
                     }
                     
                 }

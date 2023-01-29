@@ -49,6 +49,7 @@ struct ContentView: View {
                     Image(systemName: "list.bullet")
                 }
         }
+        .accentColor(Color.tertiaryBackground)
         .onAppear() {
             UITabBar.appearance().barTintColor = UIColor(Color.primaryColor)
         }

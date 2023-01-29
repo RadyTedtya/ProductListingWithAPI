@@ -12,6 +12,8 @@ struct ProductCardView: View {
     
     var product: Product
     @ObservedObject var viewModel: ContentViewModel = .init()
+    @State var isLiked: Bool = false
+    @State var likedImage: String = "heart.filled"
     
     var body: some View {
         VStack(spacing: 10) {
@@ -31,9 +33,13 @@ struct ProductCardView: View {
                 
                 Button {
                     viewModel.favoriteProducts.append(product)
+                    if !isLiked {
+                        isLiked = true
+                    } else {
+                        isLiked = false
+                    }
                 } label: {
-                    Image(systemName: "heart")
-                        .foregroundColor(Color.primary)
+                    heartImage()
                 }
                 .offset(x:60, y: -15)
                 
@@ -43,7 +49,7 @@ struct ProductCardView: View {
             Text(product.title)
                 .foregroundColor(Color.primaryTextColor)
                 .font(.system(size: 18, weight: .bold))
-                
+            
             
             
             HStack {
@@ -64,12 +70,22 @@ struct ProductCardView: View {
                     .font(.system(size: 10.5))
             }
         }
+        .foregroundColor(Color.tertiaryBackground)
         .padding()
         .frame(width: 170, height: 300)
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .shadow(radius: 10)
         .padding()
+    }
+    
+    
+    func heartImage() -> Image {
+        if !isLiked {
+            return Image(systemName: "heart")
+        } else {
+            return Image(systemName: "heart.fill")
+        }
     }
 }
 
@@ -79,3 +95,5 @@ struct ProductCardView_Preview: PreviewProvider {
         ProductCardView(product: Product.dummyProduct)
     }
 }
+
+
