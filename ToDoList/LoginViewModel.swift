@@ -24,7 +24,8 @@ class LoginViewModel: ObservableObject {
     
     
     @Published var loginResult: LoginResultType = .loading
-    @Published var username: String = "kminchelle"
+//    @Published var username: String = "kminchelle"
+    @Published var username: String = "kminchell"
     @Published var password: String = "0lelplR"
     @Published var email: String = "0lelplR"
     @Published var DoB: String = "12 Jan 1999"
@@ -92,42 +93,14 @@ class LoginViewModel: ObservableObject {
             .responseDecodable(of: LoginResponse.self) { response in
                 defer { self.isLoading = false }
 
-//                guard response.value != nil else {
-//                    print("error")
-//                    self.loginResult = .failure
-//                    return
-//                }
-//
-//                print(response.value!)
-//                if !(response.value?.token.isEmpty ?? false) {
-//                    self.loginResult = .success
-//                }
-                
-//                if !(response.value?.token.isEmpty ?? .failure) {
-//                    self.loginResult = .success
-//                    print("Success")
-//                } else {
-//                    self.loginResult = .failure
-//                    print("Fail")
-//                }
-                
                 if response.value?.token != nil {
                     self.loginResult = .success
+                    print("Login success")
                 } else {
-                    self.loginResult = .success
+                    self.loginResult = .failure
+                    print("Login fail")
                 }
-                
-//                switch LoginResultType {
-//                case .success:
-//                    print("success")
-//                case .failure:
-//                    print("fail")
-//                }
-                
-                
-                
-                
-                
+
             }
     }
     

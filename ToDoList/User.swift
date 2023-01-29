@@ -17,7 +17,8 @@ struct LoginResponse: Decodable {
     var gender: String
     var image: String
     var token: String
-    var message: String
+//    var message: String
+    
 }
 
 
