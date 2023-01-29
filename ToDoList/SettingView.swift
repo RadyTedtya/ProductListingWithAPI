@@ -9,31 +9,43 @@ import Foundation
 import SwiftUI
 
 struct SettingView: View {
+    let allViews: [AllViews] = AllViews.allCases
+    
     var body: some View {
-        
-        
-        VStack(alignment: .leading) {
-            
-            
-            Image(systemName: "person.crop.circle.fill")
-                .resizable()
-                .frame(width:50 ,height: 50)
-                .padding(.bottom)
-            
-            Text("Tedtya RADY")
-            
-            Spacer()
-            
-            
-            List {
-                VStack(alignment: .leading, spacing: 30) {
-                    
+        NavigationView {
+            VStack(alignment: .leading) {
+                
+                Image(systemName: "person.crop.circle.fill")
+                    .resizable()
+                    .frame(width:50 ,height: 50)
+                    .padding(.bottom)
+                
+                Text("Tedtya RADY")
+                
+                Spacer()
+                
+                
+                List {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 30) {
+                            ForEach(allViews) { each in
+                                NavigationLink {
+                                    AnyView(each.view)
+                                } label: {
+                                    Text(each.rawValue.capitalized)
+                                        .font(.system(size: 18))
+                                        .foregroundColor(Color.black)
+                                    
+                                }
+                            }
+                        }
+                    }
                 }
+                
             }
-            
+            .padding()
+            .padding()
         }
-        .padding()
-        .padding()
     }
 }
 

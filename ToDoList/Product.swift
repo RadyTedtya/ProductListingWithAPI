@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import SwiftUI
+
 
 struct ProductResponse: Decodable {
     var products: [Product]
@@ -46,6 +48,32 @@ enum DisplayProductType: String, CaseIterable, Identifiable {
     var id: Self {
         return self
     }
+}
+
+
+
+//Associate value
+enum AllViews: String, CaseIterable, Identifiable {
+    
+    var id: Self {
+        return self
+    }
+    
+    var view: any View {
+        switch self {
+        case .signUp:
+            return SignUpView()
+        case .loggin:
+            return SignInView()
+        case .about:
+            return AboutView()
+        }
+    
+    }
+    case signUp
+    case loggin
+    case about
+    
 }
 
 
