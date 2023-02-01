@@ -20,9 +20,8 @@ struct CategoryView: View {
                     ForEach(viewModel.categories!, id: \.self) { category in
                         NavigationLink {
                             SubCategoryView(viewModel: viewModel)
-                                .onAppear {
-                                    viewModel.resetProducts()
-                                    viewModel.category = category
+                                .onTapGesture {
+                                    viewModel.selectedCategory = category
                                 }
                         } label: {
                             Text(category.capitalized)
@@ -31,17 +30,16 @@ struct CategoryView: View {
                         }
                     }
                 }
-                
+
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .onAppear {
-                    viewModel.resetCategories()
-                    viewModel.resetProducts()
-                    viewModel.fetchCategories()
-                }
             }
             .navigationTitle("Product Categories")
         }
-        
+        .onAppear {
+            viewModel.resetProducts()
+            viewModel.selectedCategory = ""
+            viewModel.fetchCategories()
+        }
     }
 }
 

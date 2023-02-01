@@ -22,9 +22,7 @@ struct HomeView: View {
                         Picker(selection: $viewModel.selectedDisplayType, label: Text("")){
                             ForEach(DisplayProductType.allCases) {
                                 Text($0.rawValue.capitalized)
-                                    
                                     .tag($0.id)
-                                    
                             }
                         }
                         .foregroundColor(Color.black)
@@ -34,7 +32,6 @@ struct HomeView: View {
                         .foregroundColor(Color.secondaryColor),
                                 alignment: .bottom
                     )
-                
                 Spacer()
                 
                 if !(viewModel.products ?? []).isEmpty {
@@ -46,7 +43,7 @@ struct HomeView: View {
                                         ProductDetailView(product: product, viewModel: viewModel)
                                     } label: {
                                         ProductCardView(product: product, viewModel: viewModel)
-                                            .onAppear {
+                                            .onTapGesture {
                                                 viewModel.loadMoreContent(currentIndex: index)
                                             }
                                     }
@@ -58,8 +55,11 @@ struct HomeView: View {
                 }
             }
             .onAppear {
+                viewModel.selectedCategory = ""
                 viewModel.resetProducts()
                 viewModel.fetchProductsPagination()
+                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.tertiaryBackground)
+                UISegmentedControl.appearance().backgroundColor = UIColor(Color.primaryColor)
             }
             .frame(maxWidth: .infinity)
             .background(Color.primaryBackground)
@@ -74,13 +74,8 @@ struct HomeView: View {
             .onSubmit(of: .search) {
                 viewModel.resetProducts()
                 viewModel.fetchProductsPagination()
-            }
-            .onAppear() {
-                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.tertiaryBackground)
-                UISegmentedControl.appearance().backgroundColor = UIColor(Color.primaryColor)
-            }
+            }   
         }
-        
     }
 }
 

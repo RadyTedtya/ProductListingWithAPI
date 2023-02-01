@@ -9,48 +9,43 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel = .init()
-    //    @State private var selectedTabItem: Int = 0
+    @State private var selectedTabItem = "One"
     
-    private enum Tab {
-        case First, Second, Third, Forth
-    }
     
     var body: some View {
         
-        TabView() {
+        TabView(selection: $selectedTabItem) {
             HomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "house")
-                }.onAppear{
-                    viewModel.resetProducts()
-                    viewModel.fetchProductsPagination()
+                }.onTapGesture {
+                    selectedTabItem = "One"
                 }
             
             CategoryView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "square.grid.2x2")
-                }.onAppear{
-                    viewModel.resetCategories()
-                    viewModel.fetchProductsPagination()
+                }.onTapGesture {
+                    selectedTabItem = "Two"
                 }
-            
             
             FavouriteView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "heart")
-                }.onAppear {
-                    
+                }.onTapGesture {
+                    selectedTabItem = "Three"
                 }
             
             SettingView()
                 .tabItem {
                     Image(systemName: "list.bullet")
+                }.onTapGesture {
+                    selectedTabItem = "Four"
                 }
         }
         .accentColor(Color.tertiaryBackground)
         .onAppear() {
             UITabBar.appearance().barTintColor = UIColor(Color.primaryColor)
-            
         }
         
     }

@@ -29,6 +29,9 @@ struct FavouriteView: View {
             }
             .navigationTitle("Favourtie Products")
         }
+        .onAppear() {
+            viewModel.resetProducts()
+        }
         
     }
     

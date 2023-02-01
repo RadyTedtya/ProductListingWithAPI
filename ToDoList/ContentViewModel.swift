@@ -15,7 +15,7 @@ class ContentViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var searchText: String = ""
     @Published var categories: [String]? = []
-    @Published var category: String = ""
+    @Published var selectedCategory: String = ""
     @Published var users: [User]? = nil
     @Published var selectedDisplayType: DisplayProductType = .all
     @Published var favoriteProducts: [Product] = .init()
@@ -46,10 +46,11 @@ class ContentViewModel: ObservableObject {
             fetchString += "/search"
             query += "&q=\(searchText)"
         }
-        else if !category.isEmpty {
-            fetchString += "/category/\(category)?"
+        else if !selectedCategory.isEmpty {
+            fetchString += "/category/\(selectedCategory)?"
         }
         fetchString += "?\(query)"
+        print(fetchString)
         AF.request(fetchString)
             .responseDecodable(of: ProductResponse.self) { response in
                 defer { self.isLoading = false }
@@ -70,10 +71,9 @@ class ContentViewModel: ObservableObject {
         page = 0
     }
     
-    func resetCategories() {
-        categories = []
-        category = ""
-    }
+//    func resetCategories() {
+//        selectedCategory = ""
+//    }
 
     func fetchCategories() {
         isLoading = true
@@ -85,19 +85,21 @@ class ContentViewModel: ObservableObject {
                     print("error")
                     return
                 }
-                
                 if self.categories == nil {
                     self.categories = []
                 }
+                if self.categories != []{
+                    return
+                }
                 self.categories?.append(contentsOf: cateResponse.value!)
+                print(self.categories as Any)
             }
     }
-    
-//    func filterProduct() {
-//        
-//    }
-    
 }
+
+
+
+
 //  MARK: - API URL
 //  https://dummyjson.com/products
 //  https://dummyjson.com/products/search?limit=10&skip=0&q=phone
