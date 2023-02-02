@@ -26,8 +26,6 @@ struct CategoryView: View {
                                 .font(.system(size: 15))
                                 .foregroundColor(Color.black)
                         }
-                        
-                        
                     }
                 }
 

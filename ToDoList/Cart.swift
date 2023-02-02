@@ -32,6 +32,3 @@ struct Cart: Decodable, Identifiable {
     
 }
 
-
-
-

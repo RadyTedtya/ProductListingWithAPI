@@ -98,6 +98,7 @@ class ContentViewModel: ObservableObject {
     
     func addFavouriteProducts(product: Product) {
         if favouriteProducts.isEmpty {
+            favouriteProducts = []
             favouriteProducts.append(product)
             return
         }
@@ -106,7 +107,7 @@ class ContentViewModel: ObservableObject {
         } else {
             favouriteProducts.append(product)
         }
-        
+        print(favouriteProducts)
     }
     
 }

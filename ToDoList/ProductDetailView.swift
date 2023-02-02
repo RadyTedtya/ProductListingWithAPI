@@ -24,7 +24,7 @@ struct ProductDetailView: View {
                 
                 VStack {
                     HStack {
-                        Text(product.title)
+                        Text(product.title.capitalized)
                             .font(.system(size: 18, weight: .bold))
                         Spacer()
                         Image(systemName: "square.and.arrow.up")

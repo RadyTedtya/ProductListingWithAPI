@@ -31,7 +31,6 @@ struct CartView: View {
 
 struct CartCardView: View  {
     
-    @State var pw: String = ""
     @Binding var cart: Cart
     
     var body: some View {
@@ -39,7 +38,7 @@ struct CartCardView: View  {
         VStack(alignment: .leading) {
             
             ForEach(Array($cart.products.enumerated()), id: \.offset) { index, product in
-                ProductsCart(product: product, index: index)
+                ProductsCart(product: product)
             }
             .padding()
             .frame(maxWidth: .infinity)
@@ -58,8 +57,6 @@ struct CartCardView: View  {
 
 struct ProductsCart: View {
     @Binding var product: Product
-    @State var quantity: String = ""
-    @State var index: Int = 0
     
     var body: some View {
         HStack {
@@ -75,14 +72,15 @@ struct ProductsCart: View {
                     Text(String(product.price))
                     HStack {
                         Button {
-                            print("-")
+                            product.quantity!+=1
                         } label: {
-                            Text("-")
+                            Text("+")
                         }
 
                         TextField(
-                            "0",
-                            text: $quantity
+                            String(product.quantity!),
+                            value: $product.quantity,
+                            formatter: NumberFormatter.init()
                         )
                         .clipShape(RoundedRectangle(cornerRadius:40))
                         .multilineTextAlignment(.center)
@@ -91,9 +89,9 @@ struct ProductsCart: View {
                         .font(.system(size: 15))
                         
                         Button {
-                            print("+")
+                            product.quantity!-=1
                         } label: {
-                            Text("+")
+                            Text("-")
                         }
                     }
                     .frame(width: 100)
