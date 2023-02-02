@@ -73,7 +73,7 @@ struct ProductDetailView: View {
                     
                     HStack() {
                         Button {
-                            viewModel.favoriteProducts.append(product)
+                            viewModel.addFavouriteProducts(product: product)
                         } label: {
                             Image(systemName: "heart.square.fill")
                                 .resizable()

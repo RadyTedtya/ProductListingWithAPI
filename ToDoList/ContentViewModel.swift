@@ -18,7 +18,7 @@ class ContentViewModel: ObservableObject {
     @Published var selectedCategory: String = ""
     @Published var users: [User]? = nil
     @Published var selectedDisplayType: DisplayProductType = .all
-    @Published var favoriteProducts: [Product] = .init()
+    @Published var favouriteProducts: [Product] = .init()
     
     
     
@@ -95,6 +95,20 @@ class ContentViewModel: ObservableObject {
                 print(self.categories as Any)
             }
     }
+    
+    func addFavouriteProducts(product: Product) {
+        if favouriteProducts.isEmpty {
+            favouriteProducts.append(product)
+            return
+        }
+        if favouriteProducts.contains(where: {$0.id == product.id}){
+            return
+        } else {
+            favouriteProducts.append(product)
+        }
+        
+    }
+    
 }
 
 

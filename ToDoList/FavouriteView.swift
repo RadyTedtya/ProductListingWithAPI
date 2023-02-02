@@ -21,7 +21,7 @@ struct FavouriteView: View {
 //                    ForEach(viewModel.products ?? [] ) { product in
 //                        ProductRow(product: product, viewModel: viewModel)
 //                    }
-                    ForEach(viewModel.favoriteProducts) { product in
+                    ForEach(viewModel.favouriteProducts) { product in
                         ProductRow(product: product, viewModel: viewModel)
                     }
                 }
@@ -54,13 +54,13 @@ struct ProductRow: View {
                         .font(.system(size: 18, weight: .bold))
                     Spacer()
                     Button {
-                        viewModel.favoriteProducts.append(product)
+                        viewModel.addFavouriteProducts(product: product)
                     } label: {
                         Image(systemName: "heart")
                             .foregroundColor(Color.primary)
                     }
                     Button {
-                        viewModel.favoriteProducts.append(product)
+                        viewModel.addFavouriteProducts(product: product)
                     } label: {
                         Image(systemName: "square.and.arrow.up")
                             .foregroundColor(Color.primary)

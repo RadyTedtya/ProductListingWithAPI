@@ -29,10 +29,10 @@ struct ProductCardView: View {
                     .frame(maxWidth: .infinity)
                     .frame(height: 180))
                 
-                
-                
                 Button {
-                    viewModel.favoriteProducts.append(product)
+//                    viewModel.favoriteProducts.append(product)
+                    viewModel.addFavouriteProducts(product: product)
+                    
                     if !isLiked {
                         isLiked = true
                     } else {
