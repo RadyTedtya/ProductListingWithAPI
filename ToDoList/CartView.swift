@@ -89,7 +89,12 @@ struct ProductsCart: View {
                         .font(.system(size: 15))
                         
                         Button {
-                            product.quantity!-=1
+                            if product.quantity! <= 0 {
+                                return
+                            } else {
+                                product.quantity!-=1
+                            }
+                            
                         } label: {
                             Text("-")
                         }
