@@ -11,10 +11,10 @@ import SwiftUI
 struct SubCategoryView: View {
     
     @ObservedObject var viewModel: ContentViewModel
+    @State var selectedCategory: String = ""
     let column = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-        NavigationView {
             ScrollView {
                 VStack {
                     LazyVGrid(columns: column) {
@@ -23,9 +23,9 @@ struct SubCategoryView: View {
                                 ProductDetailView(product: product)
                             } label: {
                                 ProductCardView(product: product)
-                                    .onTapGesture {
-                                        viewModel.loadMoreContent(currentIndex: index)
-                                    }
+                            }
+                            .onAppear {
+                                viewModel.loadMoreContent(currentIndex: index)
                             }
                         }
                     }
@@ -33,8 +33,9 @@ struct SubCategoryView: View {
                 
             }
             .navigationTitle(viewModel.selectedCategory.capitalized)
-        }
         .onAppear {
+            viewModel.resetProducts()
+            viewModel.selectedCategory = self.selectedCategory
             viewModel.fetchProductsPagination()
         }
     }

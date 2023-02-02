@@ -19,15 +19,15 @@ struct CategoryView: View {
                 List {
                     ForEach(viewModel.categories!, id: \.self) { category in
                         NavigationLink {
-                            SubCategoryView(viewModel: viewModel)
-                                .onTapGesture {
-                                    viewModel.selectedCategory = category
-                                }
+                            SubCategoryView(viewModel: viewModel, selectedCategory: category)
+
                         } label: {
                             Text(category.capitalized)
                                 .font(.system(size: 15))
                                 .foregroundColor(Color.black)
                         }
+                        
+                        
                     }
                 }
 

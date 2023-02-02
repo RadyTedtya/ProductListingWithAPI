@@ -27,7 +27,7 @@ struct FavouriteView: View {
                 }
                 .background(Color.white)
             }
-            .navigationTitle("Favourtie Products")
+            .navigationTitle("Favourite Products")
         }
         .onAppear() {
             viewModel.resetProducts()

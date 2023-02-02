@@ -43,7 +43,7 @@ struct HomeView: View {
                                         ProductDetailView(product: product, viewModel: viewModel)
                                     } label: {
                                         ProductCardView(product: product, viewModel: viewModel)
-                                            .onTapGesture {
+                                            .onAppear {
                                                 viewModel.loadMoreContent(currentIndex: index)
                                             }
                                     }
