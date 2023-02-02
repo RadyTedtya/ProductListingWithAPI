@@ -33,11 +33,11 @@ struct SubCategoryView: View {
                 
             }
             .navigationTitle(viewModel.selectedCategory.capitalized)
-        .onAppear {
-            viewModel.resetProducts()
-            viewModel.selectedCategory = self.selectedCategory
-            viewModel.fetchProductsPagination()
-        }
+            .onAppear {
+                viewModel.resetProducts()
+                viewModel.selectedCategory = self.selectedCategory
+                viewModel.fetchProductsPagination()
+            }
     }
     
 }
