@@ -53,8 +53,6 @@ struct CartCardView: View  {
         
 }
 
-
-
 struct ProductsCart: View {
     @Binding var product: Product
     
@@ -76,7 +74,6 @@ struct ProductsCart: View {
                         } label: {
                             Text("+")
                         }
-
                         TextField(
                             String(product.quantity!),
                             value: $product.quantity,

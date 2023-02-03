@@ -13,20 +13,16 @@ struct SettingView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
-                
-                Image(systemName: "person.crop.circle.fill")
-                    .resizable()
-                    .frame(width:50 ,height: 50)
-                    .padding(.bottom)
-                
-                Text("Tedtya RADY")
-                
-                Spacer()
-                
-                
-                List {
-                    ScrollView {
+            VStack {
+                VStack (alignment: .leading) {
+                    Image(systemName: "person.crop.circle.fill")
+                        .resizable()
+                        .frame(width:50 ,height: 50)
+                        .padding(.bottom)
+                    Text("Tedtya RADY")
+                    
+                    
+                    List {
                         VStack(alignment: .leading, spacing: 30) {
                             ForEach(allViews) { each in
                                 NavigationLink {
@@ -41,19 +37,52 @@ struct SettingView: View {
                         }
                     }
                 }
-                
+                .padding()
+                .padding()
             }
-            .background(Color.white)
-            .padding()
-            .padding()
         }
     }
-}
-
-
-
-struct SettingView_Preview: PreviewProvider {
-    static var previews: some View {
-        SettingView()
+    
+    
+    
+    struct SettingView_Preview: PreviewProvider {
+        static var previews: some View {
+            SettingView()
+        }
     }
+    
 }
+    
+    //VStack(alignment: .leading) {
+    //
+    //    Image(systemName: "person.crop.circle.fill")
+    //        .resizable()
+    //        .frame(width:50 ,height: 50)
+    //        .padding(.bottom)
+    //
+    //    Text("Tedtya RADY")
+    //
+    //    Spacer()
+    //
+    //
+    //    List {
+    //        ScrollView {
+    //            VStack(alignment: .leading, spacing: 30) {
+    //                ForEach(allViews) { each in
+    //                    NavigationLink {
+    //                        AnyView(each.view)
+    //                    } label: {
+    //                        Text(each.rawValue.capitalized)
+    //                            .font(.system(size: 18))
+    //                            .foregroundColor(Color.black)
+    //
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //
+    //    .background(Color.white)
+    //    .padding()
+    //    .padding()
+    //}

@@ -12,7 +12,6 @@ struct HomeView: View {
     
     @ObservedObject var loginViewModel: LoginViewModel = .init()
     @ObservedObject var viewModel: ContentViewModel = .init()
-//    @State var categories: [String] = ["All","New", "Sale"]
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -65,7 +64,12 @@ struct HomeView: View {
             .background(Color.primaryBackground)
             .navigationBarItems(trailing:
                 NavigationLink {
+                if loginViewModel.loginResult == .success {
                     CartView(loginViewModel: loginViewModel)
+                } else {
+                    SignInView()
+                }
+                    
             } label: {
                 Image(systemName: "bag")
             }
@@ -78,7 +82,6 @@ struct HomeView: View {
         }
     }
 }
-
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

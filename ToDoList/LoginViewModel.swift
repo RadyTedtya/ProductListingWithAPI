@@ -24,8 +24,10 @@ class LoginViewModel: ObservableObject {
     
     
     @Published var loginResult: LoginResultType = .loading
-    @Published var username: String = "kminchelle"
-    @Published var password: String = "0lelplR"
+//    @Published var username: String = "kminchelle"
+//    @Published var password: String = "0lelplR"
+    @Published var username: String = ""
+    @Published var password: String = ""
     @Published var email: String = "0lelplR"
     @Published var DoB: String = "12 Jan 1999"
     @Published var isLoading: Bool = false

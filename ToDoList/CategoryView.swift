@@ -20,7 +20,6 @@ struct CategoryView: View {
                     ForEach(viewModel.categories!, id: \.self) { category in
                         NavigationLink {
                             SubCategoryView(viewModel: viewModel, selectedCategory: category)
-
                         } label: {
                             Text(category.capitalized)
                                 .font(.system(size: 15))

@@ -68,9 +68,14 @@ struct SignInView: View {
                 .padding()
                 
                 Button {
+                    loginViewModel.loginResult = .loading
                     showingAlert = true
                     loginViewModel.login()
-                    
+                    if loginViewModel.loginResult == .success {
+                        print("test1")
+                        HomeView()
+                    }
+                    print("test2")
                 } label: {
                     Text("Log in")
                         .padding()
@@ -83,6 +88,7 @@ struct SignInView: View {
                 }
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text(loginViewModel.loginResult.rawValue.capitalized))
+                    
                 }
                 
                 Text("Forgot password")
