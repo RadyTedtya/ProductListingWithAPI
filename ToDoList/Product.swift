@@ -50,32 +50,3 @@ enum DisplayProductType: String, CaseIterable, Identifiable {
     }
 }
 
-
-
-//Associate value
-enum AllViews: String, CaseIterable, Identifiable {
-    
-    var id: Self {
-        return self
-    }
-    
-    var view: any View {
-        switch self {
-        case .signUp:
-            return SignUpView()
-        case .loggin:
-            return SignInView()
-        case .about:
-            return AboutView()
-        }
-    
-    }
-    case signUp
-    case loggin
-    case about
-    
-}
-
-
-
-

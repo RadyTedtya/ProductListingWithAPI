@@ -9,7 +9,33 @@ import Foundation
 import SwiftUI
 
 struct SettingView: View {
-    let allViews: [AllViews] = AllViews.allCases
+    
+    // Associate value
+    enum SettingType: String, CaseIterable, Identifiable {
+        
+        case signUp
+        case loggin
+        case about
+        
+        var id: Self {
+            return self
+        }
+        
+        var view: any View {
+            switch self {
+            case .signUp:
+                return SignUpView()
+            case .loggin:
+                return SignInView()
+            case .about:
+                return AboutView()
+            }
+        
+        }
+        
+    }
+
+    private let _dataSource: [SettingType] = SettingType.allCases
     
     var body: some View {
         NavigationView {
@@ -24,7 +50,7 @@ struct SettingView: View {
                     
                     List {
                         VStack(alignment: .leading, spacing: 30) {
-                            ForEach(allViews) { each in
+                            ForEach(_dataSource) { each in
                                 NavigationLink {
                                     AnyView(each.view)
                                 } label: {
@@ -45,6 +71,7 @@ struct SettingView: View {
     
     
     
+    
     struct SettingView_Preview: PreviewProvider {
         static var previews: some View {
             SettingView()
@@ -52,6 +79,8 @@ struct SettingView: View {
     }
     
 }
+
+
     
     //VStack(alignment: .leading) {
     //
@@ -86,3 +115,129 @@ struct SettingView: View {
     //    .padding()
     //    .padding()
     //}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// MARK: - explanation of delegate and referencing
+
+
+protocol ChildDelegate: AnyObject {
+    func onTrigger()
+}
+
+class Parent: ChildDelegate  {
+    
+    let child: Child = .init()
+    
+    init() {
+        child.delegate = self
+    }
+    
+    func onTrigger() {
+        print("Hello Trigger")
+    }
+}
+
+
+class Child {
+    
+    weak var delegate: ChildDelegate?
+    
+    init() {
+    }
+    
+    func test() {
+        delegate?.onTrigger()
+    }
+ 
+}
+
+
+
+
+class Vehicle {
+    
+    let motor: Motor = .init()
+    
+    init () {
+    }
+    
+    func horn() {
+        print("Honk Honk")
+    }
+}
+
+
+class Motor {
+    weak var delegate: MotorDelegate?
+    
+    init() {
+    }
+    
+    func startHorn() {
+        delegate?.horn()
+    }
+}
+
+protocol MotorDelegate:AnyObject {
+    func horn()
+}
+
+
+
+
+
+
+
+class ParentTwo  {
+    
+    let child: ChildTwo = .init()
+    
+    init() {
+        child.onCompletion = {
+            self.onTrigger()
+        }
+        
+        child.test()
+    }
+    
+    func onTrigger() {
+        print("Hello Trigger")
+    }
+    
+}
+
+
+
+class ChildTwo {
+    
+    var onCompletion: (() -> Void)? = nil
+    
+    init() {
+        
+    }
+    
+    func test() {
+        self.onCompletion?()
+//        delegate?.onTrigger()
+    }
+ 
+}
+
+
+

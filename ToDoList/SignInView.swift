@@ -13,112 +13,131 @@ struct SignInView: View {
     @ObservedObject var loginViewModel: LoginViewModel = .init()
     @State private var showingAlert = false
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        VStack(alignment: .center) {
-            Spacer()
-            Image(systemName: "square.stack.3d.up")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .foregroundColor(Color.white)
+        ZStack {
+            if loginViewModel.isLoading {
+                ZStack(alignment: .center) {
+                    ProgressView()
+                    
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.black.opacity(0.6).edgesIgnoringSafeArea(.all))
+                .zIndex(1)
+            }
             
-            Spacer()
-            
-            VStack(alignment: .leading, spacing: 5) {
-                Text("Log in to your account")
-                    .font(.system(size: 23))
-                Text("Hello there, please log in to continue")
-                    .foregroundColor(Color.gray)
+            VStack(alignment: .center) {
+                Spacer()
+                Image(systemName: "square.stack.3d.up")
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .foregroundColor(Color.white)
                 
-                VStack(alignment: .leading) {
-                    Text("Email or Phone Number")
-                        .foregroundColor(Color.tertiaryBackground)
-                        .font(.system(size: 17, weight: .bold))
+                Spacer()
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Log in to your account")
+                        .font(.system(size: 23))
+                    Text("Hello there, please log in to continue")
+                        .foregroundColor(Color.gray)
                     
-                    TextField(
-                        "Username/Email",
-                        text: $loginViewModel.username
-                    )
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.bottom, 5)
-                    .overlay(   Rectangle()
-                        .frame(height: 1)
-                        .foregroundColor(Color.gray.opacity(0.2)),
-                                alignment: .bottom
-                    )
-                }
-                .padding()
-                
-                VStack(alignment: .leading) {
-                    Text("Password")
-                        .foregroundColor(Color.tertiaryBackground)
-                        .font(.system(size: 17, weight: .bold))
-                    
-                    TextField(
-                        "Password",
-                        text: $loginViewModel.password
-                    )
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.bottom, 5)
-                    .overlay(   Rectangle()
-                        .frame(height: 1)
-                        .foregroundColor(Color.gray.opacity(0.2)),
-                                alignment: .bottom
-                    )
-                }
-                .padding()
-                
-                Button {
-                    loginViewModel.loginResult = .loading
-                    showingAlert = true
-                    loginViewModel.login()
-                    if loginViewModel.loginResult == .success {
-                        print("test1")
-                        HomeView()
-                    }
-                    print("test2")
-                } label: {
-                    Text("Log in")
-                        .padding()
-                        .foregroundColor(Color.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 40)
-                        .background(Color.tertiaryBackground)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .padding(.horizontal)
-                }
-                .alert(isPresented: $showingAlert) {
-                    Alert(title: Text(loginViewModel.loginResult.rawValue.capitalized))
-                    
-                }
-                
-                Text("Forgot password")
-                    .foregroundColor(Color.tertiaryBackground)
-                    .padding(.top)
-                
-                HStack(alignment: .center) {
-                    Text("Dont have an account?")
-                        .foregroundColor(Color.tertiaryBackground)
-                        .font(.system(size: 12))
-                    NavigationLink {
-                        SignUpView()
-                    } label: {
-                        Text("Sign up")
+                    VStack(alignment: .leading) {
+                        Text("Email or Phone Number")
                             .foregroundColor(Color.tertiaryBackground)
-                            .font(.system(size: 12, weight: .bold))
+                            .font(.system(size: 17, weight: .bold))
+                        
+                        TextField(
+                            "Username/Email",
+                            text: $loginViewModel.username
+                        )
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.bottom, 5)
+                        .overlay(   Rectangle()
+                            .frame(height: 1)
+                            .foregroundColor(Color.gray.opacity(0.2)),
+                                    alignment: .bottom
+                        )
                     }
+                    .padding()
+                    
+                    VStack(alignment: .leading) {
+                        Text("Password")
+                            .foregroundColor(Color.tertiaryBackground)
+                            .font(.system(size: 17, weight: .bold))
+                        
+                        TextField(
+                            "Password",
+                            text: $loginViewModel.password
+                        )
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.bottom, 5)
+                        .overlay(   Rectangle()
+                            .frame(height: 1)
+                            .foregroundColor(Color.gray.opacity(0.2)),
+                                    alignment: .bottom
+                        )
+                    }
+                    .padding()
+                    
+                    Button {
+                        loginViewModel.login()
+                        
+                    } label: {
+                        Text("Log in")
+                            .padding()
+                            .foregroundColor(Color.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 40)
+                            .background(Color.tertiaryBackground)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .padding(.horizontal)
+                    }
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text(loginViewModel.loginResult.rawValue.capitalized))
+                        
+                    }
+                    
+                    Text("Forgot password")
+                        .foregroundColor(Color.tertiaryBackground)
+                        .padding(.top)
+                    
+                    HStack(alignment: .center) {
+                        Text("Dont have an account?")
+                            .foregroundColor(Color.tertiaryBackground)
+                            .font(.system(size: 12))
+                        NavigationLink {
+                            SignUpView()
+                        } label: {
+                            Text("Sign up")
+                                .foregroundColor(Color.tertiaryBackground)
+                                .font(.system(size: 12, weight: .bold))
+                        }
+                    }
+                    .padding(.top)
+                    
                 }
-                .padding(.top)
+                .padding()
+                .background(Color.secondaryBackground)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 
+                Spacer()
             }
             .padding()
-            .background(Color.secondaryBackground)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            
-            Spacer()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.tertiaryBackground)
+            .onReceive(loginViewModel.$loginResult) { result in
+                if result == .success {
+                    presentationMode.wrappedValue.dismiss()
+                }
+                
+                
+                //                if result == .loading {
+                //                    //                    showingAlert
+                //                }
+            }
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.tertiaryBackground)
+        
     }
     
 }
