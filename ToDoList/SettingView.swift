@@ -15,6 +15,7 @@ enum SettingType: String, CaseIterable, Identifiable {
     case signUp
     case loggin
     case about
+    case terms
     
     var id: Self {
         return self
@@ -28,8 +29,11 @@ enum SettingType: String, CaseIterable, Identifiable {
             return SignInView()
         case .about:
             return AboutView()
+        case .terms:
+            return TermsView()
         }
     }
+ 
 }
 
 
@@ -39,7 +43,7 @@ struct SettingView: View {
     
     var body: some View {
         
-        NavigationView {
+        NavigationView() {
             VStack(alignment: .leading){
                 Image(systemName: "person.crop.circle.fill")
                     .resizable()
@@ -60,13 +64,24 @@ struct SettingView: View {
                         }
                     }
                     .navigationBarTitle("Setting", displayMode: .inline)
-                    
+                }
+                
+                Spacer()
+                
+                Button {
+                    print("Sign Out")
+                } label: {
+                    Text("Sign Out")
+                        .foregroundColor(Color.white)
+                        .frame(width: 200, height: 50, alignment: .center)
+                        .background(Color.secondaryColor)
+                        .clipShape(RoundedRectangle(cornerRadius: 6))
+                        
                 }
             }
         }
     }
-    
-    
+}
     
     //struct SettingView: View {
     //
@@ -117,7 +132,7 @@ struct SettingView: View {
         }
     }
     
-}
+
 
 
 

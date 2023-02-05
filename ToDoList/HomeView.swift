@@ -21,6 +21,7 @@ struct HomeView: View {
         UISegmentedControl.appearance().backgroundColor = UIColor(Color.white)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
         
+    
     }
     
     var body: some View {

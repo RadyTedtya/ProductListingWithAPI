@@ -31,10 +31,8 @@ struct FavouriteView: View {
         }
         .onAppear() {
             viewModel.resetProducts()
-        }
-        
+        }   
     }
-    
 }
 
 
