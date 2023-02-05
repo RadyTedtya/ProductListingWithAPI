@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SignInView: View {
     
-    @ObservedObject var loginViewModel: LoginViewModel = .init()
+    @ObservedObject var loginViewModel: LoginViewModel
     @State private var showingAlert = false
     
     @Environment(\.presentationMode) var presentationMode
@@ -130,11 +130,6 @@ struct SignInView: View {
                 if result == .success {
                     presentationMode.wrappedValue.dismiss()
                 }
-                
-                
-                //                if result == .loading {
-                //                    //                    showingAlert
-                //                }
             }
         }
         
@@ -142,11 +137,6 @@ struct SignInView: View {
     
 }
 
-struct SignInView_Preview: PreviewProvider {
-    static var previews: some View {
-        SignInView()
-    }
-}
 
 
 

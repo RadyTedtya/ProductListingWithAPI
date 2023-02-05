@@ -9,47 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel: ContentViewModel = .init()
-//    @State private var selectedTabItem = "One"
+    @ObservedObject var loginViewModel: LoginViewModel = .init()
     
     
     var body: some View {
         
         TabView {
-            HomeView(viewModel: viewModel)
+            HomeView(viewModel: viewModel, loginViewModel: loginViewModel)
                 .tabItem {
                     Image(systemName: "house")
                 }
-//                .onTapGesture {
-//                    selectedTabItem = "One"
-//                }
             
             CategoryView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "square.grid.2x2")
                 }
-//                .onTapGesture {
-//                    selectedTabItem = "Two"
-//                }
             
             FavouriteView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "heart")
                 }
-//                .onTapGesture {
-//                    selectedTabItem = "Three"
-//                }
             
-            SettingView()
+            SettingView(loginViewModel:  loginViewModel)
                 .tabItem {
                     Image(systemName: "list.bullet")
                 }
-//                .onTapGesture {
-//                    selectedTabItem = "Four"
-//                }
         }
         .accentColor(Color.tertiaryBackground)
         .onAppear() {
             UITabBar.appearance().barTintColor = UIColor(Color.primaryColor)
+            
         }
         
     }

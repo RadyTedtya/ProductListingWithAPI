@@ -21,12 +21,12 @@ enum SettingType: String, CaseIterable, Identifiable {
         return self
     }
     
-    var view: any View {
+    func makeView(loginViewModel: LoginViewModel? = nil) -> any View {
         switch self {
         case .signUp:
             return SignUpView()
         case .loggin:
-            return SignInView()
+            return SignInView(loginViewModel: loginViewModel!)
         case .about:
             return AboutView()
         case .terms:
@@ -39,7 +39,22 @@ enum SettingType: String, CaseIterable, Identifiable {
 
 struct SettingView: View {
     
+    @State var loginViewModel: LoginViewModel
     private let _dataSource: [SettingType] = SettingType.allCases
+    
+    func getView(type: SettingType) -> any View {
+        switch type {
+        case .signUp:
+            return SignUpView()
+        case .loggin:
+            return SignInView(loginViewModel: loginViewModel)
+            
+        case .about:
+            return AboutView()
+        case .terms:
+            return TermsView()
+        }
+    }
     
     var body: some View {
         
@@ -56,7 +71,7 @@ struct SettingView: View {
                 List {
                     ForEach(_dataSource) { row in
                         NavigationLink {
-                            AnyView(row.view)
+                            AnyView(row.makeView(loginViewModel: loginViewModel))
                         } label: {
                             Text(row.rawValue.capitalized)
                                 .font(.system(size: 18))
@@ -83,57 +98,6 @@ struct SettingView: View {
     }
 }
     
-    //struct SettingView: View {
-    //
-    //
-    //    private let _dataSource: [SettingType] = SettingType.allCases
-    //
-    //    var body: some View {
-    //        NavigationView {
-    //            VStack {
-    //                VStack (alignment: .leading) {
-    //                    Image(systemName: "person.crop.circle.fill")
-    //                        .resizable()
-    //                        .frame(width:50 ,height: 50)
-    //                        .padding(.bottom)
-    //                    Text("Tedtya RADY")
-    //
-    //
-    //                    List {
-    //                        VStack(alignment: .leading, spacing: 30) {
-    //                            ForEach(_dataSource) { each in
-    //                                NavigationLink {
-    //                                    AnyView(each.view)
-    //                                } label: {
-    //                                    Text(each.rawValue.capitalized)
-    //                                        .font(.system(size: 18))
-    //                                        .foregroundColor(Color.black)
-    //
-    //                                }
-    //                            }
-    //                        }
-    //                    }
-    //                    .background(Color.white)
-    //                }
-    //                .padding()
-    //                .padding()
-    //            }
-    //            .navigationTitle("Setting")
-    //        }
-    //
-    //    }
-    
-    
-    
-    
-    struct SettingView_Preview: PreviewProvider {
-        static var previews: some View {
-            SettingView()
-        }
-    }
-    
-
-
 
 
 //VStack(alignment: .leading) {

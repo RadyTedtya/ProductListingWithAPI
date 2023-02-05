@@ -10,18 +10,17 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject var loginViewModel: LoginViewModel = .init()
+    @ObservedObject var loginViewModel: LoginViewModel
     @ObservedObject var viewModel: ContentViewModel
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
-    init(viewModel: ContentViewModel) {
+    init(viewModel: ContentViewModel, loginViewModel: LoginViewModel) {
         self.viewModel = viewModel
+        self.loginViewModel = loginViewModel
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.tertiaryBackground)
         UISegmentedControl.appearance().backgroundColor = UIColor(Color.white)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        
-    
     }
     
     var body: some View {
@@ -32,7 +31,6 @@ struct HomeView: View {
                         Text($0.rawValue.capitalized)
                             .tag($0.id)
                     }
-                    
                 }
                 .foregroundColor(Color.black)
                 .pickerStyle(.segmented)
@@ -72,8 +70,14 @@ struct HomeView: View {
                 if loginViewModel.loginResult == .success {
                     CartView(loginViewModel: loginViewModel)
                 } else {
-                    SignInView()
+                    SignInView(loginViewModel: loginViewModel)
                 }
+//                if loginViewModel.user.id.words.isEmpty {
+//                    SignInView()
+//                } else {
+//                    CartView(loginViewModel: loginViewModel)
+//                }
+                
                 
             } label: {
                 Image(systemName: "bag")
@@ -86,11 +90,7 @@ struct HomeView: View {
             }
         }
     }
+    
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(viewModel: .init())
-    }
-}
 
