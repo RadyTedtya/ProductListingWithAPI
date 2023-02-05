@@ -11,26 +11,36 @@ import SwiftUI
 struct HomeView: View {
     
     @ObservedObject var loginViewModel: LoginViewModel = .init()
-    @ObservedObject var viewModel: ContentViewModel = .init()
+    @ObservedObject var viewModel: ContentViewModel
     
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    
+    init(viewModel: ContentViewModel) {
+        self.viewModel = viewModel
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.tertiaryBackground)
+        UISegmentedControl.appearance().backgroundColor = UIColor(Color.white)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+    }
     
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
-                        Picker(selection: $viewModel.selectedDisplayType, label: Text("")){
-                            ForEach(DisplayProductType.allCases) {
-                                Text($0.rawValue.capitalized)
-                                    .tag($0.id)
-                            }
-                        }
-                        .foregroundColor(Color.black)
-                        .pickerStyle(SegmentedPickerStyle())
-                        .overlay(   Rectangle()
-                        .frame(height: 2)
-                        .foregroundColor(Color.secondaryColor),
-                                alignment: .bottom
-                    )
+                Picker(selection: $viewModel.selectedDisplayType, label: Text("Display Product")){
+                    ForEach(DisplayProductType.allCases) {
+                        Text($0.rawValue.capitalized)
+                            .tag($0.id)
+                    }
+                    
+                }
+                .foregroundColor(Color.black)
+                .pickerStyle(.segmented)
+                
+                //                .overlay(   Rectangle()
+                //                    .frame(height: 2)
+                //                    .foregroundColor(Color.secondaryColor),
+                //                            alignment: .bottom
+                //                )
+                
                 Spacer()
                 
                 if !(viewModel.products ?? []).isEmpty {
@@ -47,7 +57,6 @@ struct HomeView: View {
                                             }
                                     }
                                 }
-                                
                             }
                         }
                     }
@@ -57,19 +66,18 @@ struct HomeView: View {
                 viewModel.selectedCategory = ""
                 viewModel.resetProducts()
                 viewModel.fetchProductsPagination()
-                UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.tertiaryBackground)
-                UISegmentedControl.appearance().backgroundColor = UIColor(Color.primaryColor)
+
             }
             .frame(maxWidth: .infinity)
             .background(Color.primaryBackground)
             .navigationBarItems(trailing:
-                NavigationLink {
+                                    NavigationLink {
                 if loginViewModel.loginResult == .success {
                     CartView(loginViewModel: loginViewModel)
                 } else {
                     SignInView()
                 }
-                    
+                
             } label: {
                 Image(systemName: "bag")
             }
@@ -78,14 +86,14 @@ struct HomeView: View {
             .onSubmit(of: .search) {
                 viewModel.resetProducts()
                 viewModel.fetchProductsPagination()
-            }   
+            }
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(viewModel: .init())
     }
 }
 
