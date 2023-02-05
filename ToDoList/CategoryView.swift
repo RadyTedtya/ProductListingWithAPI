@@ -30,7 +30,7 @@ struct CategoryView: View {
 
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .navigationTitle("Product Categories")
+            .navigationBarTitle("Categories", displayMode: .inline)
         }
         .onAppear {
             viewModel.resetProducts()

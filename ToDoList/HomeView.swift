@@ -20,6 +20,7 @@ struct HomeView: View {
         UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(Color.tertiaryBackground)
         UISegmentedControl.appearance().backgroundColor = UIColor(Color.white)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        
     }
     
     var body: some View {
@@ -34,12 +35,6 @@ struct HomeView: View {
                 }
                 .foregroundColor(Color.black)
                 .pickerStyle(.segmented)
-                
-                //                .overlay(   Rectangle()
-                //                    .frame(height: 2)
-                //                    .foregroundColor(Color.secondaryColor),
-                //                            alignment: .bottom
-                //                )
                 
                 Spacer()
                 
@@ -66,10 +61,11 @@ struct HomeView: View {
                 viewModel.selectedCategory = ""
                 viewModel.resetProducts()
                 viewModel.fetchProductsPagination()
-
+                
             }
             .frame(maxWidth: .infinity)
             .background(Color.primaryBackground)
+            .navigationBarTitle("Products", displayMode: .inline)
             .navigationBarItems(trailing:
                                     NavigationLink {
                 if loginViewModel.loginResult == .success {

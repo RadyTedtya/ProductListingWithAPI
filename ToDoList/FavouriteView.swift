@@ -27,7 +27,7 @@ struct FavouriteView: View {
                 }
                 .background(Color.white)
             }
-            .navigationTitle("Favourite Products")
+            .navigationBarTitle("Favourite Products", displayMode: .inline)
         }
         .onAppear() {
             viewModel.resetProducts()

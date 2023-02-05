@@ -32,7 +32,7 @@ struct SubCategoryView: View {
                 }
                 
             }
-            .navigationTitle(viewModel.selectedCategory.capitalized)
+            .navigationBarTitle(viewModel.selectedCategory.capitalized, displayMode: .inline)
             .onAppear {
                 viewModel.resetProducts()
                 viewModel.selectedCategory = self.selectedCategory
