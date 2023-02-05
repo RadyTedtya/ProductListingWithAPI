@@ -12,10 +12,12 @@ import SwiftUI
 
 enum SettingType: String, CaseIterable, Identifiable {
     
+    case userDetail
     case signUp
     case loggin
     case about
     case terms
+    
     
     var id: Self {
         return self
@@ -23,6 +25,8 @@ enum SettingType: String, CaseIterable, Identifiable {
     
     func makeView(loginViewModel: LoginViewModel? = nil) -> any View {
         switch self {
+        case .userDetail:
+            return UserDetailView(loginViewModel: loginViewModel!)
         case .signUp:
             return SignUpView()
         case .loggin:
@@ -42,19 +46,21 @@ struct SettingView: View {
     @State var loginViewModel: LoginViewModel
     private let _dataSource: [SettingType] = SettingType.allCases
     
-    func getView(type: SettingType) -> any View {
-        switch type {
-        case .signUp:
-            return SignUpView()
-        case .loggin:
-            return SignInView(loginViewModel: loginViewModel)
-            
-        case .about:
-            return AboutView()
-        case .terms:
-            return TermsView()
-        }
-    }
+//    func getView(type: SettingType) -> any View {
+//        switch type {
+//        case .userDetail:
+//            return UserDetailView(loginViewModel: <#T##LoginViewModel#>)
+//        }
+//        case .signUp:
+//            return SignUpView()
+//        case .loggin:
+//            return SignInView(loginViewModel: loginViewModel)
+//
+//        case .about:
+//            return AboutView()
+//        case .terms:
+//            return TermsView()
+//    }
     
     var body: some View {
         
@@ -91,7 +97,8 @@ struct SettingView: View {
                         .frame(width: 200, height: 50, alignment: .center)
                         .background(Color.secondaryColor)
                         .clipShape(RoundedRectangle(cornerRadius: 6))
-                        
+                        .padding(.leading, 20)
+                        .padding(.bottom, 20)
                 }
             }
         }
