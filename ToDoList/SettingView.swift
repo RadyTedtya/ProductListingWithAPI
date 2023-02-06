@@ -26,7 +26,11 @@ enum SettingType: String, CaseIterable, Identifiable {
     func makeView(loginViewModel: LoginViewModel? = nil) -> any View {
         switch self {
         case .userDetail:
-            return UserDetailView(loginViewModel: loginViewModel!)
+            if loginViewModel?.loginResult == .success {
+                return UserDetailView(loginViewModel: loginViewModel!)
+            } else {
+                return SignInView(loginViewModel: loginViewModel!)
+            }
         case .signUp:
             return SignUpView()
         case .loggin:
@@ -45,22 +49,6 @@ struct SettingView: View {
     
     @State var loginViewModel: LoginViewModel
     private let _dataSource: [SettingType] = SettingType.allCases
-    
-//    func getView(type: SettingType) -> any View {
-//        switch type {
-//        case .userDetail:
-//            return UserDetailView(loginViewModel: <#T##LoginViewModel#>)
-//        }
-//        case .signUp:
-//            return SignUpView()
-//        case .loggin:
-//            return SignInView(loginViewModel: loginViewModel)
-//
-//        case .about:
-//            return AboutView()
-//        case .terms:
-//            return TermsView()
-//    }
     
     var body: some View {
         

@@ -23,6 +23,19 @@ struct HomeView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
     }
     
+    var dataSource:[Product] {
+        if viewModel.selectedDisplayType == .all {
+            return viewModel.products!
+        }
+        if viewModel.selectedDisplayType == .sale {
+            return viewModel.products!.filter {$0.discountPercentage! > 5.0 }
+        }
+        if viewModel.selectedDisplayType == .trending {
+            return viewModel.products!.filter {$0.rating! > 4.68}
+        }
+        return viewModel.products!
+    }
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 10) {
@@ -41,7 +54,7 @@ struct HomeView: View {
                     ScrollView(.vertical) {
                         VStack {
                             LazyVGrid(columns: columns) {
-                                ForEach(Array(viewModel.products!.enumerated()), id: \.offset) { index, product in
+                                ForEach(Array(dataSource.enumerated()), id: \.offset) { index, product in
                                     NavigationLink {
                                         ProductDetailView(product: product, viewModel: viewModel)
                                     } label: {
@@ -72,13 +85,6 @@ struct HomeView: View {
                 } else {
                     SignInView(loginViewModel: loginViewModel)
                 }
-//                if loginViewModel.user.id.words.isEmpty {
-//                    SignInView()
-//                } else {
-//                    CartView(loginViewModel: loginViewModel)
-//                }
-                
-                
             } label: {
                 Image(systemName: "bag")
             }
@@ -91,6 +97,25 @@ struct HomeView: View {
         }
     }
     
+//    func filterProducts(viewModel: ContentViewModel) -> ContentViewModel {
+//        switch self {
+//        case .all:
+//            viewModel.resetProducts()
+//            viewModel.fetchProductsPagination()
+//            return viewModel
+//        case .trending:
+//            viewModel.resetProducts()
+//            viewModel.products = viewModel.products?.filter {$0.rating! > 4.0}
+//            return viewModel
+//        case .sale:
+//            viewModel.resetProducts()
+//            viewModel.products = viewModel.products?.filter {!String($0.discountPercentage!).isEmpty}
+//            return viewModel
+//        }
+//    }
+    
+    
 }
+
 
 

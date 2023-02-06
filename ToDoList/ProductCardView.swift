@@ -30,9 +30,7 @@ struct ProductCardView: View {
                     .frame(height: 180))
                 
                 Button {
-//                    viewModel.favoriteProducts.append(product)
                     viewModel.addFavouriteProducts(product: product)
-                    
                     if !isLiked {
                         isLiked = true
                     } else {
@@ -62,9 +60,10 @@ struct ProductCardView: View {
                     .font(.system(size: 10.5))
                 
                 Spacer()
-                Image(systemName: "star")
+                Image(systemName: "star.fill")
                     .resizable()
                     .frame(width: 12, height: 12)
+                    .foregroundColor(Color.tertiaryBackground)
                 Text(String(product.rating ?? 0.0))
                     .foregroundColor(Color.black)
                     .font(.system(size: 10.5))

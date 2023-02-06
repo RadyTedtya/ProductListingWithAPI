@@ -12,6 +12,7 @@ struct ProductDetailView: View {
     @State var product: Product = Product.dummyProduct
     @ObservedObject var viewModel: ContentViewModel = .init()
     
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -81,7 +82,6 @@ struct ProductDetailView: View {
                                 .foregroundColor(Color.secondaryColor)
                         }
                         
-                        
                         Button {
                             print("clicked")
                         } label: {
@@ -91,7 +91,6 @@ struct ProductDetailView: View {
                                 .background(Color.secondaryColor)
                                 .clipShape(RoundedRectangle(cornerRadius: 6))
                         }
-                        
                     }
                     
                     Spacer()

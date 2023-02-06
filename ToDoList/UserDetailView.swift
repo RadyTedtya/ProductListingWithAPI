@@ -11,7 +11,13 @@ import SwiftUI
 struct UserDetailView:View {
     
     @State var loginViewModel: LoginViewModel
+    
     var body: some View {
         Text("User Detail View")
+        Button {
+            print(loginViewModel.loginResult.rawValue)
+        } label: {
+            Text("Print")
+        }
     }
 }

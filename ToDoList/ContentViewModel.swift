@@ -21,7 +21,6 @@ class ContentViewModel: ObservableObject {
     @Published var favouriteProducts: [Product] = .init()
     
     
-    
     private var _hasMoreItem: Bool = false
     var page : Int = 0
     
@@ -107,7 +106,6 @@ class ContentViewModel: ObservableObject {
         } else {
             favouriteProducts.append(product)
         }
-        print(favouriteProducts)
     }
     
 }
