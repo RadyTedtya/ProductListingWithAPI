@@ -40,6 +40,7 @@ struct SignUpView: View {
                 
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Create account")
+                        .foregroundColor(Color.black)
                         .font(.system(size: 23))
                     Text("Hello there, please sign in to continue")
                         .foregroundColor(Color.gray)
@@ -53,6 +54,7 @@ struct SignUpView: View {
                           "Username",
                           text:$viewModel.username
                         )
+                        .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 5)
                         .overlay(   Rectangle()
@@ -71,6 +73,7 @@ struct SignUpView: View {
                           "Username/Email",
                           text: $viewModel.email
                         )
+                        .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 5)
                         .overlay(   Rectangle()
@@ -84,13 +87,13 @@ struct SignUpView: View {
                     
                     VStack(alignment: .leading) {
                         Text("Password")
-
                             .font(.system(size: 17, weight: .bold))
                         
-                        TextField(
+                        SecureField(
                           "Password",
                           text: $viewModel.password
                         )
+                        .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 5)
                         .overlay(   Rectangle()

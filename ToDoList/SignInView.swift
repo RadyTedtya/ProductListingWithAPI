@@ -66,7 +66,7 @@ struct SignInView: View {
                             .foregroundColor(Color.tertiaryBackground)
                             .font(.system(size: 17, weight: .bold))
                         
-                        TextField(
+                        SecureField(
                             "Password",
                             text: $loginViewModel.password
                         )

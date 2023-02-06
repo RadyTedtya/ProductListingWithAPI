@@ -61,6 +61,7 @@ struct ProductsCart: View {
             Image(systemName: "checkmark.circle")
                 .padding(.horizontal, 20)
             
+            Spacer()
             VStack(alignment: .leading) {
                 Text(product.title)
                     .multilineTextAlignment(.leading)
