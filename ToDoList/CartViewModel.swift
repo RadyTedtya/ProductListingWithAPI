@@ -32,10 +32,6 @@ class CartViewModel: ObservableObject {
                 defer {self.isLoading = false
                     print("Number of carts: " + String(self.carts.count))
                 }
-//                guard response.value != nil else {
-//                    print("Error")
-//                    return
-//                }
                 
                 if cartResponse.value != nil {
                     print("fetched cart success")

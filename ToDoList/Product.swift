@@ -52,6 +52,6 @@ enum DisplayProductType: String, CaseIterable, Identifiable {
     }
 }
 
-    
+
 
 

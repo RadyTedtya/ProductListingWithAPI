@@ -49,7 +49,7 @@ struct SettingView: View {
     
     @ObservedObject var loginViewModel: LoginViewModel
     private let _dataSource: [SettingType] = SettingType.allCases
-//    @Environment (\.presentationMode) var presentationMode
+    //    @Environment (\.presentationMode) var presentationMode
     
     var body: some View {
         

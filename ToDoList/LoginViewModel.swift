@@ -32,8 +32,8 @@ class LoginViewModel: ObservableObject {
     @Published var signUpResult: LoginResultType = .loading
     @Published var username: String = "kminchelle"
     @Published var password: String = "0lelplR"
-//    @Published var username: String = ""
-//    @Published var password: String = ""
+    //    @Published var username: String = ""
+    //    @Published var password: String = ""
     @Published var email: String = "0lelplR"
     @Published var DoB: String = "12 Jan 1999"
     @Published var isLoading: Bool = false
@@ -44,11 +44,11 @@ class LoginViewModel: ObservableObject {
         isLoading = true
         let loginURL = "https://dummyjson.com/auth/login"
         let header: HTTPHeaders = ["Content-Type" : "application/json"]
-
+        
         AF.request(loginURL, method: .post, parameters: UserLoginRequest(username: username, password: password), encoder: .json, headers: header)
             .responseDecodable(of: LoginResponse.self) { response in
                 defer { self.isLoading = false }
-
+                
                 if response.value?.token != nil {
                     self.loginResult = .success
                     print("Login success")
@@ -56,7 +56,7 @@ class LoginViewModel: ObservableObject {
                     self.loginResult = .failure
                     print("Login fail")
                 }
-
+                
             }
     }
     
@@ -85,10 +85,10 @@ class LoginViewModel: ObservableObject {
             }
     }
     
-
     
     
-
+    
+    
     
 }
 

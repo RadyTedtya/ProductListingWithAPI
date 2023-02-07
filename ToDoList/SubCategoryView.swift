@@ -15,36 +15,30 @@ struct SubCategoryView: View {
     let column = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-            ScrollView {
-                VStack {
-                    LazyVGrid(columns: column) {
-                        ForEach(Array(viewModel.products!.enumerated()), id: \.offset) { index, product in
-                            NavigationLink {
-                                ProductDetailView(product: product)
-                            } label: {
-                                ProductCardView(product: product)
-                            }
-                            .onAppear {
-                                viewModel.loadMoreContent(currentIndex: index)
-                            }
+        ScrollView {
+            VStack {
+                LazyVGrid(columns: column) {
+                    ForEach(Array(viewModel.products!.enumerated()), id: \.offset) { index, product in
+                        NavigationLink {
+                            ProductDetailView(product: product)
+                        } label: {
+                            ProductCardView(product: product)
+                        }
+                        .onAppear {
+                            viewModel.loadMoreContent(currentIndex: index)
                         }
                     }
                 }
-                
             }
-            .navigationBarTitle(viewModel.selectedCategory.capitalized, displayMode: .inline)
-            .onAppear {
-                viewModel.resetProducts()
-                viewModel.selectedCategory = self.selectedCategory
-                viewModel.fetchProductsPagination()
-            }
+            
+        }
+        .navigationBarTitle(viewModel.selectedCategory.capitalized, displayMode: .inline)
+        .onAppear {
+            viewModel.resetProducts()
+            viewModel.selectedCategory = self.selectedCategory
+            viewModel.fetchProductsPagination()
+        }
     }
     
 }
 
-
-struct SubCategoryView_Preview: PreviewProvider {
-    static var previews: some View {
-        SubCategoryView(viewModel: .init())
-    }
-}

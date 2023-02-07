@@ -31,12 +31,6 @@ class ContentViewModel: ObservableObject {
         }
     }
     
-
-//  MARK:   API fetch to:
-//          - load all products
-//          - load search product
-//          - load category products
-//          with pagination
     func fetchProductsPagination() {
         isLoading = true
         var fetchString  = "https://dummyjson.com/products"
@@ -70,10 +64,6 @@ class ContentViewModel: ObservableObject {
         page = 0
     }
     
-//    func resetCategories() {
-//        selectedCategory = ""
-//    }
-
     func fetchCategories() {
         isLoading = true
         let fetchCategoryQuery = "https://dummyjson.com/products/categories"
@@ -109,14 +99,4 @@ class ContentViewModel: ObservableObject {
     }
     
 }
-
-
-
-
-//  MARK: - API URL
-//  https://dummyjson.com/products
-//  https://dummyjson.com/products/search?limit=10&skip=0&q=phone
-//  https://dummyjson.com/products/category/smartphones?limit=10&skip=0
-    
-
 

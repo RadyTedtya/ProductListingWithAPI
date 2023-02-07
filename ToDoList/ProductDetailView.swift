@@ -104,8 +104,8 @@ struct ProductDetailView: View {
         }
         .navigationTitle("Product Detail")
     }
-        
-        
+    
+    
     
 }
 

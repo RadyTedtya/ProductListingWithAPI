@@ -11,7 +11,7 @@ import SwiftUI
 struct CategoryView: View {
     
     @ObservedObject var viewModel: ContentViewModel = .init()
-
+    
     var body: some View {
         
         NavigationView {
@@ -27,7 +27,7 @@ struct CategoryView: View {
                         }
                     }
                 }
-
+                
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .navigationBarTitle("Categories", displayMode: .inline)

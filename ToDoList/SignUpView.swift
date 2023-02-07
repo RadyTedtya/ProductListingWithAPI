@@ -10,9 +10,6 @@ import SwiftUI
 
 struct SignUpView: View {
     
-//    @State var username: String = ""
-//    @State var email: String = ""
-//    @State var password: String = ""
     @ObservedObject var viewModel: LoginViewModel = .init()
     @State private var showingAlert = false
     @Environment(\.presentationMode) var presentationMode
@@ -51,8 +48,8 @@ struct SignUpView: View {
                             .font(.system(size: 17, weight: .bold))
                         
                         TextField(
-                          "Username",
-                          text:$viewModel.username
+                            "Username",
+                            text:$viewModel.username
                         )
                         .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -70,8 +67,8 @@ struct SignUpView: View {
                             .font(.system(size: 17, weight: .bold))
                         
                         TextField(
-                          "Username/Email",
-                          text: $viewModel.email
+                            "Username/Email",
+                            text: $viewModel.email
                         )
                         .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -90,8 +87,8 @@ struct SignUpView: View {
                             .font(.system(size: 17, weight: .bold))
                         
                         SecureField(
-                          "Password",
-                          text: $viewModel.password
+                            "Password",
+                            text: $viewModel.password
                         )
                         .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -119,7 +116,7 @@ struct SignUpView: View {
                     .alert(isPresented: $showingAlert) {
                         Alert(title: Text(viewModel.loginResult.rawValue))
                     }
-
+                    
                     HStack(alignment: .center) {
                         Text("Already have an account?")
                             .font(.system(size: 12))
@@ -152,10 +149,4 @@ struct SignUpView: View {
     }
     
     
-}
-
-struct SignUpView_Preview: PreviewProvider {
-    static var previews: some View {
-        SignUpView()
-    }
 }
