@@ -50,59 +50,8 @@ enum DisplayProductType: String, CaseIterable, Identifiable {
     var id: Self {
         return self
     }
-    
-//    switch self{
-//    case .all:
-//        
-//    }
-    
-//    switch self {
-//    case .all:
-//        viewModel.resetProducts()
-//        viewModel.fetchProductsPagination()
-//    case .trending:
-//        viewModel.resetProducts()
-//        viewModel.products = viewModel.products?.filter {$0.rating! > 4.0}
-//    case .sale:
-//        viewModel.resetProducts()
-//        viewModel.products = viewModel.products?.filter {!String($0.discountPercentage!).isEmpty}
-//    }
-    
-    
-    
-    
-//    func filterProducts(viewModel: ContentViewModel){
-//        switch self {
-//        case .all:
-//            viewModel.resetProducts()
-//            viewModel.fetchProductsPagination()
-//        case .trending:
-//            viewModel.resetProducts()
-//            viewModel.products = viewModel.products?.filter {$0.rating! > 4.0}
-//        case .sale:
-//            viewModel.resetProducts()
-//            viewModel.products = viewModel.products?.filter {!String($0.discountPercentage!).isEmpty}
-//        }
-//    }
-    
-//    func filterProducts(viewModel: ContentViewModel) -> ContentViewModel {
-//        switch self {
-//        case .all:
-//            viewModel.resetProducts()
-//            viewModel.fetchProductsPagination()
-//            return viewModel
-//        case .trending:
-//            viewModel.resetProducts()
-//            viewModel.products = viewModel.products?.filter {$0.rating! > 4.0}
-//            return viewModel
-//        case .sale:
-//            viewModel.resetProducts()
-//            viewModel.products = viewModel.products?.filter {!String($0.discountPercentage!).isEmpty}
-//            return viewModel
-//        }
-//    }
-    
-    
-    
 }
+
+    
+
 

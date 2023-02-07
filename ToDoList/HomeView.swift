@@ -28,10 +28,10 @@ struct HomeView: View {
             return viewModel.products!
         }
         if viewModel.selectedDisplayType == .sale {
-            return viewModel.products!.filter {$0.discountPercentage! > 5.0 }
+            return viewModel.products!.filter {$0.discountPercentage! > 5.0 } //filter products with discoutprice more than 5.0$
         }
         if viewModel.selectedDisplayType == .trending {
-            return viewModel.products!.filter {$0.rating! > 4.68}
+            return viewModel.products!.filter {$0.rating! > 4.50} //filter products with rating more than 4.5
         }
         return viewModel.products!
     }
@@ -96,24 +96,6 @@ struct HomeView: View {
             }
         }
     }
-    
-//    func filterProducts(viewModel: ContentViewModel) -> ContentViewModel {
-//        switch self {
-//        case .all:
-//            viewModel.resetProducts()
-//            viewModel.fetchProductsPagination()
-//            return viewModel
-//        case .trending:
-//            viewModel.resetProducts()
-//            viewModel.products = viewModel.products?.filter {$0.rating! > 4.0}
-//            return viewModel
-//        case .sale:
-//            viewModel.resetProducts()
-//            viewModel.products = viewModel.products?.filter {!String($0.discountPercentage!).isEmpty}
-//            return viewModel
-//        }
-//    }
-    
     
 }
 

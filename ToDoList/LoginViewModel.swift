@@ -93,32 +93,3 @@ class LoginViewModel: ObservableObject {
 }
 
 
-
-// MARK: - Syn, Asyn, Main thread, Background thread, Closure
-
-//    typealias MyCompletion = (_ result: Bool, _ second: Int) -> Void
-//
-//    func test(completion: @escaping MyCompletion) {
-//        DispatchQueue.global(qos: .background).async {
-//            completion(false, 12)
-//            print("1")
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                completion(true, 2)
-//            }
-//            print("2")
-//        }
-//    }
-//
-//    func login() {
-//        print("3")
-//        test { result, second in
-//            if result {
-//                print("I ('m here now)")
-//            } else {
-//                print("H (ello there)")
-//            }
-//
-//        }
-//        print("4")
-// 3 1 2 4 I H
-

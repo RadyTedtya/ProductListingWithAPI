@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Kingfisher
 
 // Associate value
 
@@ -18,7 +19,6 @@ enum SettingType: String, CaseIterable, Identifiable {
     case about
     case terms
     
-    
     var id: Self {
         return self
     }
@@ -29,7 +29,7 @@ enum SettingType: String, CaseIterable, Identifiable {
             if loginViewModel?.loginResult == .success {
                 return UserDetailView(loginViewModel: loginViewModel!)
             } else {
-                return SignInView(loginViewModel: loginViewModel!)
+                return SignInView(loginViewModel:  loginViewModel!)
             }
         case .signUp:
             return SignUpView()
@@ -41,25 +41,26 @@ enum SettingType: String, CaseIterable, Identifiable {
             return TermsView()
         }
     }
- 
+    
 }
 
 
 struct SettingView: View {
     
-    @State var loginViewModel: LoginViewModel
+    @ObservedObject var loginViewModel: LoginViewModel
     private let _dataSource: [SettingType] = SettingType.allCases
+//    @Environment (\.presentationMode) var presentationMode
     
     var body: some View {
         
         NavigationView() {
             VStack(alignment: .leading){
-                Image(systemName: "person.crop.circle.fill")
+                KFImage(URL(string: loginViewModel.user.image ?? "person.crop.circle.fill"))
                     .resizable()
                     .frame(width:50 ,height: 50)
                     .padding(.bottom)
                     .padding(.leading)
-                Text("Tedtya RADY")
+                Text(loginViewModel.username)
                     .padding(.leading)
                 
                 List {
@@ -92,8 +93,10 @@ struct SettingView: View {
             }
         }
     }
-}
     
+    
+}
+
 
 
 

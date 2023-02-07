@@ -11,7 +11,6 @@ import Alamofire
 class CartViewModel: ObservableObject {
     
     @Published var checked: Bool = false
-//    @Published var quantity: Int = 0
     @Published var test: String = "0"
     @Published var loggedIn: Bool = false
     @Published var loginViewModel: LoginViewModel = .init()
