@@ -40,7 +40,8 @@ struct HomeView: View {
         NavigationView {
             VStack(spacing: 10) {
                 Picker(selection: $viewModel.selectedDisplayType, label: Text("Display Product")){
-                    ForEach(DisplayProductType.allCases) {
+//                    ForEach(DisplayProductType.allCases) {
+                    ForEach(DisplayProductType.allCases){
                         Text($0.rawValue.capitalized)
                             .tag($0.id)
                     }

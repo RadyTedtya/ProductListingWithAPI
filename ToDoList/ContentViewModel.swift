@@ -8,6 +8,13 @@
 import Alamofire
 import SwiftUI
 
+enum DisplayProductType: String, CaseIterable, Identifiable {
+    case all = "All Products", trending, sale
+    var id: Self {
+        return self
+    }
+}
+
 class ContentViewModel: ObservableObject {
     
     @Published var products: [Product]? = nil
@@ -19,6 +26,7 @@ class ContentViewModel: ObservableObject {
     @Published var users: [User]? = nil
     @Published var selectedDisplayType: DisplayProductType = .all
     @Published var favouriteProducts: [Product] = .init()
+    
     
     
     private var _hasMoreItem: Bool = false

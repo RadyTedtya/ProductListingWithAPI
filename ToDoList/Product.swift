@@ -45,12 +45,7 @@ struct Product: Identifiable, Decodable {
 
 
 
-enum DisplayProductType: String, CaseIterable, Identifiable {
-    case all, trending, sale
-    var id: Self {
-        return self
-    }
-}
+
 
 
 
