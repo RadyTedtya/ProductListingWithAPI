@@ -32,7 +32,6 @@ struct Product: Identifiable, Decodable {
     var quantity: Int?
     var total: Double?
     
-    
     static let dummyImages: [String] = [
         "https://i.dummyjson.com/data/products/12/1.jpg",
         "https://i.dummyjson.com/data/products/12/2.jpg",

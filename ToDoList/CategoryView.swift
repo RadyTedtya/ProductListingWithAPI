@@ -32,12 +32,14 @@ struct CategoryView: View {
             }
             .navigationBarTitle("Categories", displayMode: .inline)
         }
+        .background(Color.white)
         .onAppear {
             viewModel.resetProducts()
             viewModel.selectedCategory = ""
             viewModel.fetchCategories()
         }
     }
+        
 }
 
 

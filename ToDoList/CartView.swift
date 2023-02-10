@@ -56,12 +56,16 @@ struct CartCardView: View  {
 struct ProductsCart: View {
     @Binding var product: Product
     
+    var quantity: Int {
+        return product.quantity!
+    }
+    
     var body: some View {
         HStack {
             Image(systemName: "checkmark.circle")
                 .padding(.horizontal, 20)
+                .frame(width: 50)
             
-            Spacer()
             VStack(alignment: .leading) {
                 Text(product.title)
                     .multilineTextAlignment(.leading)
@@ -102,6 +106,8 @@ struct ProductsCart: View {
                 .font(.system(size: 18, weight: .bold))
                 .foregroundColor(Color.secondaryColor)
             }
+            .padding(.leading, 10)
+                Spacer()
         }
     }
 }

@@ -27,7 +27,6 @@ enum LoginResultType: String {
 
 class LoginViewModel: ObservableObject {
     
-    
     @Published var loginResult: LoginResultType = .loading
     @Published var signUpResult: LoginResultType = .loading
     @Published var username: String = "kminchelle"
