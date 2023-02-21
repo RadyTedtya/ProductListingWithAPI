@@ -13,11 +13,11 @@ import Kingfisher
 
 enum SettingType: String, CaseIterable, Identifiable {
     
-    case userDetail
-    case signUp
-    case loggin
-    case about
-    case terms
+    case userDetail = "User Detail"
+    case signUp = "Sign Up"
+    case loggin = "Log in"
+    case about = "About"
+    case terms = "Terms and Conditions"
     
     var id: Self {
         return self
@@ -68,7 +68,7 @@ struct SettingView: View {
                         NavigationLink {
                             AnyView(row.makeView(loginViewModel: loginViewModel))
                         } label: {
-                            Text(row.rawValue.capitalized)
+                            Text(row.rawValue)
                                 .font(.system(size: 18))
                                 .foregroundColor(Color.black)
                         }

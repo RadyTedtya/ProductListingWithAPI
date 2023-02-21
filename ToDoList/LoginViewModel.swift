@@ -17,7 +17,7 @@ struct UserLoginRequest: Encodable {
 struct UserSignUpRequest: Encodable {
     let username: String
     let password: String
-    let DoB: String
+    let email: String
 }
 
 
@@ -34,7 +34,6 @@ class LoginViewModel: ObservableObject {
     //    @Published var username: String = ""
     //    @Published var password: String = ""
     @Published var email: String = "0lelplR"
-    @Published var DoB: String = "12 Jan 1999"
     @Published var isLoading: Bool = false
     @Published var user: User = User.dummUser
     
@@ -47,7 +46,6 @@ class LoginViewModel: ObservableObject {
         AF.request(loginURL, method: .post, parameters: UserLoginRequest(username: username, password: password), encoder: .json, headers: header)
             .responseDecodable(of: LoginResponse.self) { response in
                 defer { self.isLoading = false }
-                
                 if response.value?.token != nil {
                     self.loginResult = .success
                     print("Login success")
@@ -55,7 +53,6 @@ class LoginViewModel: ObservableObject {
                     self.loginResult = .failure
                     print("Login fail")
                 }
-                
             }
     }
     
@@ -66,7 +63,7 @@ class LoginViewModel: ObservableObject {
         let header: HTTPHeaders = ["Content-Type" : "application/json"]
         
         
-        AF.request(signUpURL, method: .post, parameters: UserSignUpRequest(username: username, password: password, DoB: DoB), encoder: .json, headers: header)
+        AF.request(signUpURL, method: .post, parameters: UserSignUpRequest(username: username, password: password, email: email), encoder: .json, headers: header)
             .responseDecodable(of: LoginResponse.self) { response in
                 defer { self.isLoading = false }
                 guard response.value != nil else {
