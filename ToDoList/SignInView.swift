@@ -15,6 +15,12 @@ struct SignInView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
+    
+    init(loginViewModel: LoginViewModel, showingAlert: Bool = false) {
+        self.loginViewModel = loginViewModel
+        self.showingAlert = showingAlert
+    }
+    
     var body: some View {
         ZStack {
             if loginViewModel.isLoading {
@@ -131,8 +137,7 @@ struct SignInView: View {
                     presentationMode.wrappedValue.dismiss()
                 }
             }
-        }
-        
+        }        
     }
     
 }

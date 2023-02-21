@@ -56,10 +56,6 @@ struct CartCardView: View  {
 struct ProductsCart: View {
     @Binding var product: Product
     
-    var quantity: Int {
-        return product.quantity!
-    }
-    
     var body: some View {
         HStack {
             Image(systemName: "checkmark.circle")
@@ -72,10 +68,11 @@ struct ProductsCart: View {
                 
                 HStack {
                     Text("$ ")
-                    Text(String(product.price))
+                    Text(String(product.total!))
                     HStack {
                         Button {
-                            product.quantity!+=1
+                            product.quantity = product.quantity! + 1
+                            product.total = Double(product.quantity!) * product.price
                         } label: {
                             Text("+")
                         }
@@ -94,7 +91,8 @@ struct ProductsCart: View {
                             if product.quantity! <= 0 {
                                 return
                             } else {
-                                product.quantity!-=1
+                                product.quantity = product.quantity! - 1
+                                product.total = Double(product.quantity!) * product.price
                             }
                             
                         } label: {
