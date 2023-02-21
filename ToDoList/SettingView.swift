@@ -9,8 +9,6 @@ import Foundation
 import SwiftUI
 import Kingfisher
 
-// Associate value
-
 enum SettingType: String, CaseIterable, Identifiable {
     
     case userDetail = "User Detail"
