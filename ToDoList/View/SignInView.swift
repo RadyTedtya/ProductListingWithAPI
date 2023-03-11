@@ -15,7 +15,6 @@ struct SignInView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    
     init(loginViewModel: LoginViewModel, showingAlert: Bool = false) {
         self.loginViewModel = loginViewModel
         self.showingAlert = showingAlert
@@ -88,7 +87,7 @@ struct SignInView: View {
                     
                     Button {
                         loginViewModel.login()
-                        
+                        showingAlert = true
                     } label: {
                         Text("Log in")
                             .padding()
@@ -98,10 +97,6 @@ struct SignInView: View {
                             .background(Color.tertiaryBackground)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .padding(.horizontal)
-                    }
-                    .alert(isPresented: $showingAlert) {
-                        Alert(title: Text(loginViewModel.loginResult.rawValue.capitalized))
-                        
                     }
                     
                     Text("Forgot password")
@@ -132,6 +127,7 @@ struct SignInView: View {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.tertiaryBackground)
+            
             .onReceive(loginViewModel.$loginResult) { result in
                 if result == .success {
                     presentationMode.wrappedValue.dismiss()

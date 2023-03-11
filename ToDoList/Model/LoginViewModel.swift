@@ -39,10 +39,9 @@ class LoginViewModel: ObservableObject {
     
     
     func login() {
-        isLoading = true
+        self.isLoading = true
         let loginURL = "https://dummyjson.com/auth/login"
         let header: HTTPHeaders = ["Content-Type" : "application/json"]
-        
         AF.request(loginURL, method: .post, parameters: UserLoginRequest(username: username, password: password), encoder: .json, headers: header)
             .responseDecodable(of: LoginResponse.self) { response in
                 defer { self.isLoading = false }
@@ -56,13 +55,10 @@ class LoginViewModel: ObservableObject {
             }
     }
     
-    
     func signUp() {
         isLoading = true
         let signUpURL = "https://dummyjson.com/users/add"
         let header: HTTPHeaders = ["Content-Type" : "application/json"]
-        
-        
         AF.request(signUpURL, method: .post, parameters: UserSignUpRequest(username: username, password: password, email: email), encoder: .json, headers: header)
             .responseDecodable(of: LoginResponse.self) { response in
                 defer { self.isLoading = false }
@@ -80,6 +76,8 @@ class LoginViewModel: ObservableObject {
                 }
             }
     }
+    
+    
     
     
     
