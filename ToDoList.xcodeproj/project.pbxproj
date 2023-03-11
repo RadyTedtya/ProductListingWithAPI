@@ -11,7 +11,7 @@
 		ACBC52867D56DBBEFE688C88 /* Pods_ToDoListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7155947B08D12B23BD6EB59 /* Pods_ToDoListTests.framework */; };
 		D2C0C9B79CBB3642051D2FCC /* Pods_ToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE2768B8706EFF129E1E27E /* Pods_ToDoList.framework */; };
 		D301A55E296D19A700A8DF6F /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A55D296D19A700A8DF6F /* ToDoListApp.swift */; };
-		D301A560296D19A700A8DF6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A55F296D19A700A8DF6F /* ContentView.swift */; };
+		D301A560296D19A700A8DF6F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A55F296D19A700A8DF6F /* MainView.swift */; };
 		D301A562296D19A800A8DF6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D301A561296D19A800A8DF6F /* Assets.xcassets */; };
 		D301A565296D19A800A8DF6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D301A564296D19A800A8DF6F /* Preview Assets.xcassets */; };
 		D301A56F296D19A900A8DF6F /* ToDoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A56E296D19A900A8DF6F /* ToDoListTests.swift */; };
@@ -67,7 +67,7 @@
 		C7155947B08D12B23BD6EB59 /* Pods_ToDoListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D301A55A296D19A700A8DF6F /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D301A55D296D19A700A8DF6F /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
-		D301A55F296D19A700A8DF6F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D301A55F296D19A700A8DF6F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D301A561296D19A800A8DF6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D301A564296D19A800A8DF6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D301A56A296D19A900A8DF6F /* ToDoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,7 +222,7 @@
 			children = (
 				D3541A6C297A70AF00226D7E /* CartView.swift */,
 				D390554729767EBA00166467 /* CategoryView.swift */,
-				D301A55F296D19A700A8DF6F /* ContentView.swift */,
+				D301A55F296D19A700A8DF6F /* MainView.swift */,
 				D397F77D29838EC2005178DB /* FavouriteView.swift */,
 				D30719EF298F659B00B07BB6 /* TermsView.swift */,
 				D301A58E296D326200A8DF6F /* HomeView.swift */,
@@ -489,7 +489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D301A560296D19A700A8DF6F /* ContentView.swift in Sources */,
+				D301A560296D19A700A8DF6F /* MainView.swift in Sources */,
 				D322E7E92986287E00F255CD /* AboutView.swift in Sources */,
 				D3541A71297BA0A000226D7E /* Cart.swift in Sources */,
 				D390554829767EBA00166467 /* CategoryView.swift in Sources */,
@@ -680,6 +680,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -710,6 +711,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

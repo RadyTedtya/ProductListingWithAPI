@@ -12,9 +12,6 @@ import Kingfisher
 struct UserDetailView:View {
     
     @ObservedObject var loginViewModel: LoginViewModel
-    var arrayRows: [String] = [ "A", "B", "C"]
-    
-    
     
     var body: some View {
         NavigationView {

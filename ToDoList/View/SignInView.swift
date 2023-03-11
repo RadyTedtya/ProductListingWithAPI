@@ -12,7 +12,6 @@ struct SignInView: View {
     
     @ObservedObject var loginViewModel: LoginViewModel
     @State private var showingAlert = false
-    
     @Environment(\.presentationMode) var presentationMode
     
     init(loginViewModel: LoginViewModel, showingAlert: Bool = false) {
@@ -25,7 +24,6 @@ struct SignInView: View {
             if loginViewModel.isLoading {
                 ZStack(alignment: .center) {
                     ProgressView()
-                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.black.opacity(0.6).edgesIgnoringSafeArea(.all))
@@ -127,13 +125,16 @@ struct SignInView: View {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.tertiaryBackground)
-            
             .onReceive(loginViewModel.$loginResult) { result in
                 if result == .success {
                     presentationMode.wrappedValue.dismiss()
                 }
             }
-        }        
+            .navigationTitle("Login")
+            .navigationBarTitle("login")
+            .toolbarBackground(Color.red, for: .navigationBar)
+        }
+        
     }
     
 }
