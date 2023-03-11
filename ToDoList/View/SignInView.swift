@@ -130,9 +130,6 @@ struct SignInView: View {
                     presentationMode.wrappedValue.dismiss()
                 }
             }
-            .navigationTitle("Login")
-            .navigationBarTitle("login")
-            .toolbarBackground(Color.red, for: .navigationBar)
         }
         
     }
