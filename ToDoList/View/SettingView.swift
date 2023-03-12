@@ -24,7 +24,7 @@ enum SettingType: String, CaseIterable, Identifiable {
     func makeView(loginViewModel: LoginViewModel? = nil) -> any View {
         switch self {
         case .userDetail:
-            if loginViewModel?.loginResult == .success {
+            if Singleton.shared.loginSuccess {
                 return UserDetailView(loginViewModel: loginViewModel!)
             } else {
                 return SignInView(loginViewModel:  loginViewModel!)
@@ -47,6 +47,7 @@ struct SettingView: View {
     
     @ObservedObject var loginViewModel: LoginViewModel
     private let _dataSource: [SettingType] = SettingType.allCases
+    @State var showingAlert: Bool = false
     
     var body: some View {
         
@@ -74,10 +75,9 @@ struct SettingView: View {
                 }
                 
                 Spacer()
-                
-                Button {
-                    loginViewModel.loginResult = .loading
-                    print("Signed Out")
+                Button { //Non Sign out API
+                    Singleton.shared.loginSuccess = false
+                    self.showingAlert = true
                 } label: {
                     Text("Sign Out")
                         .foregroundColor(Color.white)
@@ -86,6 +86,11 @@ struct SettingView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 6))
                         .padding(.leading, 20)
                         .padding(.bottom, 20)
+                }
+                .alert("Signed Out", isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) {
+                        print("User Signed Out")
+                    }
                 }
             }
         }
