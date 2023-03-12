@@ -7,11 +7,14 @@
 
 import Foundation
 
-class ToDoListApp {
+class Singleton {
     
-    var loginResult: Bool = false
+    var loginSuccess: Bool = false
+    var signUpSuccess: Bool = false
     
-    static let shared = ToDoList()
+    static let shared = Singleton()
     
     private init() { }
+    
 }
+
