@@ -84,7 +84,9 @@ struct SignInView: View {
                     .padding()
                     
                     Button {
-                        loginViewModel.login()
+                        loginViewModel.login(loginClosure: {
+//                            if 
+                        })
                         showingAlert = true
                     } label: {
                         Text("Log in")
@@ -130,6 +132,7 @@ struct SignInView: View {
                     presentationMode.wrappedValue.dismiss()
                 }
             }
+            .navigationBarTitle("Login", displayMode: .inline)
         }
         
     }

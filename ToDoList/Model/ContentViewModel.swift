@@ -72,6 +72,7 @@ class ContentViewModel: ObservableObject {
         page = 0
     }
     
+    
     func fetchCategories() {
         isLoading = true
         let fetchCategoryQuery = "https://dummyjson.com/products/categories"
@@ -92,6 +93,7 @@ class ContentViewModel: ObservableObject {
                 print(self.categories as Any)
             }
     }
+
     
     func addFavouriteProducts(product: Product) {
         if favouriteProducts.isEmpty {

@@ -37,9 +37,8 @@ struct MainView: View {
         .accentColor(Color.tertiaryBackground)
         .onAppear() {
             UITabBar.appearance().barTintColor = UIColor(Color.primaryColor)
-            
         }
-        
+        .foregroundColor(.tertiaryBackground)
     }
     
     

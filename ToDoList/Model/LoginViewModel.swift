@@ -38,13 +38,13 @@ class LoginViewModel: ObservableObject {
     @Published var user: User = User.dummUser
     
     
-    func login() {
+    func login(loginClosure: @escaping () -> ()) {
         self.isLoading = true
         let loginURL = "https://dummyjson.com/auth/login"
         let header: HTTPHeaders = ["Content-Type" : "application/json"]
         AF.request(loginURL, method: .post, parameters: UserLoginRequest(username: username, password: password), encoder: .json, headers: header)
             .responseDecodable(of: LoginResponse.self) { response in
-                defer { self.isLoading = false }
+                defer { self.isLoading = false; loginClosure() }
                 if response.value?.token != nil {
                     self.loginResult = .success
                     print("Login success")

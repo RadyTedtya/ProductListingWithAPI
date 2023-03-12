@@ -73,7 +73,6 @@ struct HomeView: View {
                 viewModel.selectedCategory = ""
                 viewModel.resetProducts()
                 viewModel.fetchProductsPagination()
-                
             }
             .frame(maxWidth: .infinity)
             .background(Color.primaryBackground)
@@ -87,8 +86,7 @@ struct HomeView: View {
                 }
             } label: {
                 Image(systemName: "bag")
-            }
-            )
+            })
             .searchable(text: $viewModel.searchText)
             .onSubmit(of: .search) {
                 viewModel.resetProducts()

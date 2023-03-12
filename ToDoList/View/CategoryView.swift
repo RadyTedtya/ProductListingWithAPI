@@ -27,7 +27,6 @@ struct CategoryView: View {
                         }
                     }
                 }
-                
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .navigationBarTitle("Categories", displayMode: .inline)
@@ -40,11 +39,4 @@ struct CategoryView: View {
         }
     }
         
-}
-
-
-struct CategoryView_Preview: PreviewProvider {
-    static var previews: some View {
-        CategoryView()
-    }
 }

@@ -10,7 +10,7 @@
 		A51787380850AD47AEF118B1 /* Pods_ToDoList_ToDoListUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865DC2AE6CC92A0FF1E0E89C /* Pods_ToDoList_ToDoListUITests.framework */; };
 		ACBC52867D56DBBEFE688C88 /* Pods_ToDoListTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7155947B08D12B23BD6EB59 /* Pods_ToDoListTests.framework */; };
 		D2C0C9B79CBB3642051D2FCC /* Pods_ToDoList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE2768B8706EFF129E1E27E /* Pods_ToDoList.framework */; };
-		D301A55E296D19A700A8DF6F /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A55D296D19A700A8DF6F /* ToDoListApp.swift */; };
+		D301A55E296D19A700A8DF6F /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A55D296D19A700A8DF6F /* ToDoList.swift */; };
 		D301A560296D19A700A8DF6F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D301A55F296D19A700A8DF6F /* MainView.swift */; };
 		D301A562296D19A800A8DF6F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D301A561296D19A800A8DF6F /* Assets.xcassets */; };
 		D301A565296D19A800A8DF6F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D301A564296D19A800A8DF6F /* Preview Assets.xcassets */; };
@@ -34,6 +34,7 @@
 		D3541A6D297A70AF00226D7E /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3541A6C297A70AF00226D7E /* CartView.swift */; };
 		D3541A6F297A742100226D7E /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3541A6E297A742100226D7E /* CartViewModel.swift */; };
 		D3541A71297BA0A000226D7E /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3541A70297BA0A000226D7E /* Cart.swift */; };
+		D388BEC529BD8A2E00824553 /* ToDoListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D388BEC429BD8A2E00824553 /* ToDoListApp.swift */; };
 		D390554829767EBA00166467 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390554729767EBA00166467 /* CategoryView.swift */; };
 		D397F77E29838EC2005178DB /* FavouriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D397F77D29838EC2005178DB /* FavouriteView.swift */; };
 		D3F5819B2977A85C00BCE7AA /* SubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F5819A2977A85C00BCE7AA /* SubCategoryView.swift */; };
@@ -66,7 +67,7 @@
 		8DAFA29F21304FA2FC0C3D4C /* Pods-ToDoList-ToDoListUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ToDoList-ToDoListUITests.debug.xcconfig"; path = "Target Support Files/Pods-ToDoList-ToDoListUITests/Pods-ToDoList-ToDoListUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7155947B08D12B23BD6EB59 /* Pods_ToDoListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ToDoListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D301A55A296D19A700A8DF6F /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D301A55D296D19A700A8DF6F /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
+		D301A55D296D19A700A8DF6F /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		D301A55F296D19A700A8DF6F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D301A561296D19A800A8DF6F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D301A564296D19A800A8DF6F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 		D3541A6C297A70AF00226D7E /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		D3541A6E297A742100226D7E /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		D3541A70297BA0A000226D7E /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		D388BEC429BD8A2E00824553 /* ToDoListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListApp.swift; sourceTree = "<group>"; };
 		D390554729767EBA00166467 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		D397F77D29838EC2005178DB /* FavouriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteView.swift; sourceTree = "<group>"; };
 		D3F5819A2977A85C00BCE7AA /* SubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryView.swift; sourceTree = "<group>"; };
@@ -178,7 +180,7 @@
 				D32F151E29BC467100345731 /* View */,
 				D32F151F29BC46A000345731 /* Model */,
 				D301A563296D19A800A8DF6F /* Preview Content */,
-				D301A55D296D19A700A8DF6F /* ToDoListApp.swift */,
+				D301A55D296D19A700A8DF6F /* ToDoList.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				D3541A70297BA0A000226D7E /* Cart.swift */,
+				D388BEC429BD8A2E00824553 /* ToDoListApp.swift */,
 				D3541A5C2978EF1600226D7E /* User.swift */,
 				D3541A642978F62100226D7E /* Product.swift */,
 				D3541A602978F5B800226D7E /* LoginViewModel.swift */,
@@ -490,12 +493,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D301A560296D19A700A8DF6F /* MainView.swift in Sources */,
+				D388BEC529BD8A2E00824553 /* ToDoListApp.swift in Sources */,
 				D322E7E92986287E00F255CD /* AboutView.swift in Sources */,
 				D3541A71297BA0A000226D7E /* Cart.swift in Sources */,
 				D390554829767EBA00166467 /* CategoryView.swift in Sources */,
 				D3541A672979023400226D7E /* SettingView.swift in Sources */,
 				D301A594296D391200A8DF6F /* Color+Extension.swift in Sources */,
-				D301A55E296D19A700A8DF6F /* ToDoListApp.swift in Sources */,
+				D301A55E296D19A700A8DF6F /* ToDoList.swift in Sources */,
 				D3541A6F297A742100226D7E /* CartViewModel.swift in Sources */,
 				D397F77E29838EC2005178DB /* FavouriteView.swift in Sources */,
 				D30719F0298F659B00B07BB6 /* TermsView.swift in Sources */,
