@@ -79,7 +79,7 @@ struct HomeView: View {
             .navigationBarTitle("Products", displayMode: .inline)
             .navigationBarItems(trailing:
                                     NavigationLink {
-                if loginViewModel.loginResult == .success {
+                if Singleton.shared.loginSuccess {
                     CartView(loginViewModel: loginViewModel)
                 } else {
                     SignInView(loginViewModel: loginViewModel)
