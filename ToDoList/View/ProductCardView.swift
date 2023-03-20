@@ -11,7 +11,7 @@ import Kingfisher
 struct ProductCardView: View {
     
     var product: Product
-    @ObservedObject var viewModel: ContentViewModel = .init()
+    @ObservedObject var viewModel: ContentViewModel
     @State var isLiked: Bool = false
     @State var likedImage: String = "heart.filled"
     

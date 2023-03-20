@@ -10,7 +10,7 @@ import Kingfisher
 
 struct ProductDetailView: View {
     @State var product: Product = Product.dummyProduct
-    @ObservedObject var viewModel: ContentViewModel = .init()
+    @ObservedObject var viewModel: ContentViewModel
     
     
     var body: some View {

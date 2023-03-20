@@ -10,13 +10,13 @@ import SwiftUI
 
 struct SignUpView: View {
     
-    @ObservedObject var viewModel: LoginViewModel = .init()
+    @ObservedObject var loginViewModel: LoginViewModel
     @State private var showingAlert = false
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ZStack {
-            if viewModel.isLoading {
+            if loginViewModel.isLoading {
                 ZStack(alignment: .center) {
                     ProgressView()
                 }
@@ -49,7 +49,7 @@ struct SignUpView: View {
                         
                         TextField(
                             "Username",
-                            text:$viewModel.username
+                            text:$loginViewModel.username
                         )
                         .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -68,7 +68,7 @@ struct SignUpView: View {
                         
                         TextField(
                             "Username/Email",
-                            text: $viewModel.email
+                            text: $loginViewModel.email
                         )
                         .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -88,7 +88,7 @@ struct SignUpView: View {
                         
                         SecureField(
                             "Password",
-                            text: $viewModel.password
+                            text: $loginViewModel.password
                         )
                         .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -102,7 +102,7 @@ struct SignUpView: View {
                     .padding()
                     
                     Button {
-                        viewModel.signUp()
+                        loginViewModel.signUp()
                     } label: {
                         Text("Sign Up")
                             .padding()
@@ -114,7 +114,7 @@ struct SignUpView: View {
                             .padding(.horizontal)
                     }
 //                    .alert(isPresented: $showingAlert) {
-//                        Alert(title: Text(viewModel.loginResult.rawValue))
+//                        Alert(title: Text(loginViewModel.loginResult.rawValue))
 //                    }
                     
                     HStack(alignment: .center) {

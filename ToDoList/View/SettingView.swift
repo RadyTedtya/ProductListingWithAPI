@@ -30,7 +30,7 @@ enum SettingType: String, CaseIterable, Identifiable {
                 return SignInView(loginViewModel:  loginViewModel!)
             }
         case .signUp:
-            return SignUpView()
+            return SignUpView(loginViewModel: loginViewModel!)
         case .loggin:
             return SignInView(loginViewModel: loginViewModel!)
         case .about:

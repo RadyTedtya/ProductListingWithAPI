@@ -20,9 +20,9 @@ struct SubCategoryView: View {
                 LazyVGrid(columns: column) {
                     ForEach(Array(viewModel.products!.enumerated()), id: \.offset) { index, product in
                         NavigationLink {
-                            ProductDetailView(product: product)
+                            ProductDetailView(product: product, viewModel: viewModel)
                         } label: {
-                            ProductCardView(product: product)
+                            ProductCardView(product: product, viewModel: viewModel)
                         }
                         .onAppear {
                             viewModel.loadMoreContent(currentIndex: index)

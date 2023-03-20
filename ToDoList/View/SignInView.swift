@@ -54,6 +54,7 @@ struct SignInView: View {
                             "Username/Email",
                             text: $loginViewModel.username
                         )
+                        .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 5)
                         .overlay(   Rectangle()
@@ -73,6 +74,7 @@ struct SignInView: View {
                             "Password",
                             text: $loginViewModel.password
                         )
+                        .foregroundColor(Color.black)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.bottom, 5)
                         .overlay(   Rectangle()
@@ -114,7 +116,7 @@ struct SignInView: View {
                             .foregroundColor(Color.tertiaryBackground)
                             .font(.system(size: 12))
                         NavigationLink {
-                            SignUpView()
+                            SignUpView(loginViewModel: loginViewModel)
                         } label: {
                             Text("Sign up")
                                 .foregroundColor(Color.tertiaryBackground)
