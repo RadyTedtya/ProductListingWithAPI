@@ -20,20 +20,13 @@ struct UserSignUpRequest: Encodable {
     let email: String
 }
 
-
-enum LoginResultType: String {
-    case success, failure, loading
-}
-
 class LoginViewModel: ObservableObject {
     
-    @Published var loginResult: LoginResultType = .loading
-    @Published var signUpResult: LoginResultType = .loading
+    
     @Published var username: String = "kminchelle"
-    @Published var password: String = "0lelplR"
-    //    @Published var username: String = ""
-    //    @Published var password: String = ""
-    @Published var email: String = "0lelplR"
+//    @Published var password: String = "0lelplR"
+    @Published var password: String = "0lelplRasdfasdf"
+    @Published var email: String = "kminchelle@gmail.com"
     @Published var isLoading: Bool = false
     @Published var user: User = User.dummUser
     
@@ -46,10 +39,10 @@ class LoginViewModel: ObservableObject {
             .responseDecodable(of: LoginResponse.self) { response in
                 defer { self.isLoading = false; loginClosure() }
                 if response.value?.token != nil {
-                    self.loginResult = .success
+                    Singleton.shared.loginSuccess = true
                     print("Login success")
                 } else {
-                    self.loginResult = .failure
+                    Singleton.shared.loginSuccess = false
                     print("Login fail")
                 }
             }
@@ -66,12 +59,11 @@ class LoginViewModel: ObservableObject {
                     print("error")
                     return
                 }
-                
                 if response.value?.id != nil {
-                    self.signUpResult = .success
+                    Singleton.shared.signUpSuccess = true
                     print("Sign up success")
                 } else {
-                    self.signUpResult = .failure
+                    Singleton.shared.signUpSuccess = false
                     print("Sign up failed")
                 }
             }

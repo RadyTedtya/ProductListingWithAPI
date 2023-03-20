@@ -110,8 +110,3 @@ struct ProductsCart: View {
     }
 }
 
-struct ProductsCart_Preview: PreviewProvider {
-    static var previews: some View {
-        ProductsCart(product: .constant(Product.dummyProduct))
-    }
-}

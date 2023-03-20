@@ -89,10 +89,4 @@ struct ProductCardView: View {
 }
 
 
-struct ProductCardView_Preview: PreviewProvider {
-    static var previews: some View{
-        ProductCardView(product: Product.dummyProduct)
-    }
-}
-
 

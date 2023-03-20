@@ -113,9 +113,9 @@ struct SignUpView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .padding(.horizontal)
                     }
-                    .alert(isPresented: $showingAlert) {
-                        Alert(title: Text(viewModel.loginResult.rawValue))
-                    }
+//                    .alert(isPresented: $showingAlert) {
+//                        Alert(title: Text(viewModel.loginResult.rawValue))
+//                    }
                     
                     HStack(alignment: .center) {
                         Text("Already have an account?")
@@ -140,11 +140,6 @@ struct SignUpView: View {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.tertiaryBackground)
-            .onReceive(viewModel.$signUpResult) { result in
-                if result == .success {
-                    presentationMode.wrappedValue.dismiss()
-                }
-            }
         }
     }
     

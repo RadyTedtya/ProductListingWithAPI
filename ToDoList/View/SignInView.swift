@@ -85,9 +85,11 @@ struct SignInView: View {
                     
                     Button {
                         loginViewModel.login(loginClosure: {
-//                            if 
+                            if Singleton.shared.loginSuccess {
+                                presentationMode.wrappedValue.dismiss()
+                            }
+                            showingAlert = true
                         })
-                        showingAlert = true
                     } label: {
                         Text("Log in")
                             .padding()
@@ -98,7 +100,11 @@ struct SignInView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .padding(.horizontal)
                     }
-                    
+                    .alert("Login Fail", isPresented: $showingAlert) {
+                        if Singleton.shared.loginSuccess == false {
+                            Button("Ok", role: .cancel) { }
+                        }
+                    }
                     Text("Forgot password")
                         .foregroundColor(Color.tertiaryBackground)
                         .padding(.top)
@@ -127,11 +133,6 @@ struct SignInView: View {
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.tertiaryBackground)
-            .onReceive(loginViewModel.$loginResult) { result in
-                if result == .success {
-                    presentationMode.wrappedValue.dismiss()
-                }
-            }
             .navigationBarTitle("Login", displayMode: .inline)
         }
         
