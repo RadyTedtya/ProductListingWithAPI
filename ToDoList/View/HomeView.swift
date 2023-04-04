@@ -23,17 +23,15 @@ struct HomeView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
     }
     
-    var dataSource:[Product] {
-        if viewModel.selectedDisplayType == .all {
+    var dataSource: [Product] {
+        switch viewModel.selectedDisplayType {
+        case .all:
             return viewModel.products!
-        }
-        if viewModel.selectedDisplayType == .sale {
+        case .sale:
             return viewModel.products!.filter {$0.discountPercentage! > 5.0 } //filter products with discoutprice more than 5.0$
-        }
-        if viewModel.selectedDisplayType == .trending {
+        case .trending:
             return viewModel.products!.filter {$0.rating! > 4.50} //filter products with rating more than 4.5
         }
-        return viewModel.products!
     }
     
     var body: some View {

@@ -113,9 +113,6 @@ struct SignUpView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                             .padding(.horizontal)
                     }
-//                    .alert(isPresented: $showingAlert) {
-//                        Alert(title: Text(loginViewModel.loginResult.rawValue))
-//                    }
                     
                     HStack(alignment: .center) {
                         Text("Already have an account?")
