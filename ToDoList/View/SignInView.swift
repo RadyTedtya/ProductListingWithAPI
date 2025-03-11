@@ -107,6 +107,7 @@ struct SignInView: View {
                             Button("Ok", role: .cancel) { }
                         }
                     }
+                    
                     Text("Forgot password")
                         .foregroundColor(Color.tertiaryBackground)
                         .padding(.top)

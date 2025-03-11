@@ -24,8 +24,8 @@ class LoginViewModel: ObservableObject {
     
     
     @Published var username: String = "kminchelle"
-//    @Published var password: String = "0lelplR"
-    @Published var password: String = "0lelplRasdfasdf"
+    @Published var password: String = "0lelplR"
+//    @Published var password: String = "0lelplRasdfasdf"
     @Published var email: String = "kminchelle@gmail.com"
     @Published var isLoading: Bool = false
     @Published var user: User = User.dummUser

@@ -36,9 +36,11 @@ struct KFImageRenderer<HoldingView> : View where HoldingView: KFImageHoldingView
     @StateObject var binder: KFImage.ImageBinder = .init()
     let context: KFImage.Context<HoldingView>
     
+    
     var body: some View {
         if context.startLoadingBeforeViewAppear && !binder.loadingOrSucceeded {
             DispatchQueue.main.async { binder.start(context: context) }
+
         }
         
         return ZStack {
@@ -49,7 +51,7 @@ struct KFImageRenderer<HoldingView> : View where HoldingView: KFImageHoldingView
                 .opacity(binder.loaded ? 1.0 : 0.0)
             if binder.loadedImage == nil {
                 ZStack {
-                    if let placeholder = context.placeholder, let view = placeholder(binder.progress) {
+                    if let placeholder = context.placeholder, let view = placeholder(binder.progress) as? AnyView {
                         view
                     } else {
                         Color.clear
